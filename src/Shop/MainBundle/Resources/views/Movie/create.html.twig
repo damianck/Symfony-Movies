@@ -1,0 +1,9 @@
+{% extends 'ShopMainBundle::layout.html.twig' %}
+
+{% block content %}
+	<h1>Co masz na mysli?</h1>
+	<form method="POST">
+		{{ form_row(form) }}
+		<button type="submit">Dodaj Wpis</button>
+	</form>
+{% endblock %}

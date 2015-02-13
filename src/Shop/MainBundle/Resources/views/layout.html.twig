@@ -1,0 +1,43 @@
+{% set SRC%}{{ asset('bundles/shopmain/') }}{% endset %}
+<!DOCTYPE html>
+<html lang="pl" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="description" content="">
+		<meta name="author" content="Marcin Zgoda, Damian Wtorek, Krzysztof Sarota">
+
+		<title>{% block title %}{% endblock %}</title>
+
+		{% block stylesheets %}
+
+			<link href="{{ SRC }}/css/bootstrap.min.css" rel="stylesheet">
+			<link href="{{ SRC }}/css/1-col-portfolio.css" rel="stylesheet">
+		{% endblock %}
+	</head>
+	<body>
+		<div class="page-header">
+			<header>
+				<h2> <b>Sklep z Filmami</b> </h2>
+			</header>
+		</div>
+		<div class="panel-body">
+			<section>
+				{% block content %}
+
+				{% endblock %}
+			</section>
+		</div>
+
+		<div style="position: absolute; bottom: 0; width: 100%" >
+			<footer class="panel-footer">
+				<p class="pager">
+				Projekt zaliczeniowy przedmiotu "Pracownia Programowanie 5" <br>
+				Autorzy:
+					<b> Marcin Zgoda, Damian Wtorek, Krzysztof Sarota.</b>
+				</p>
+			</footer>
+		</div>
+	</body>
+</html>
