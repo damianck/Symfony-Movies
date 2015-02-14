@@ -1,11 +1,8 @@
 services:
-#    jkanclerz_demo.example:
-#        class: Jkanclerz\DemoBundle\Example
-#        arguments: [@service_id, "plain_value", %parameter%]
-#    jkanclerz_name_provider:
-#        class: Jkanclerz\Component\Name\NameProvider
-#        arguments: [@session]
-    a_piszczek_demo.listener:
+    shop_name_provider:
+        class: Shop\MainBundle\Component\Name\NameProvider
+        arguments: [@session]
+    shop_main.listener:
         class: Shop\MainBundle\Entity\Movie
         tags:
             - { name: doctrine.event_listener, event: postInsert, connection: default  }

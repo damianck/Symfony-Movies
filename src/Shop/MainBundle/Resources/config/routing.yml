@@ -13,6 +13,6 @@ shop_main_tag_create:
         _controller: ShopMainBundle:Tag:create
 
 shop_main_movies_index:
-    path: /movies/{index}
+    path: /movies/index
     defaults:
         _controller: ShopMainBundle:Movie:index

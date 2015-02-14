@@ -1,0 +1,83 @@
+{% extends "ShopMainBundle::layout.html.twig" %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="span12">
+            <div class="" id="loginModal">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true" onclick="window.location.href='..'">×</button>
+                    <h3>Nie posiadasz konta?</h3>
+                </div>
+                <div class="modal-body">
+                    <div class="well">
+                        <ul class="nav nav-tabs">
+                            <li><a href="./../login" data-toggle="tab">Logowanie</a></li>
+                            <li class="active"><a href="" data-toggle="tab">Rejestracja</a></li>
+                        </ul>
+                        <div id="myTabContent" class="tab-content">
+                            <div class="tab-pane active in" id="register">
+                                    <form id="tab" class="form-horizontal" action="{{ path('fos_user_registration_register') }}" {{ form_enctype(form) }} method="POST" class="fos_user_registration_register">
+                                        <br>
+
+                                        <div class="form-group">
+                                            <label class="control-label col-sm-2" for="fos_user_registration_form_username">Nazwa użytkownika:</label>
+                                            <div class="col-sm-10">
+                                                <input class="form-control" type="text" id="fos_user_registration_form_username" name="fos_user_registration_form[username]" required="required" maxlength="255" pattern=".{2,}" placeholder="Nazwa użytkownika">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-sm-2" for="fos_user_registration_form_plainPassword_first">Hasło:</label>
+                                            <div class="col-sm-10">
+                                                <input class="form-control" type="password" id="fos_user_registration_form_plainPassword_first" name="fos_user_registration_form[plainPassword][first]" required="required" placeholder="Hasło">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-sm-2" for="fos_user_registration_form_plainPassword_second">Potwierdzenie hasła:</label>
+                                            <div class="col-sm-10">
+                                                <input class="form-control"type="password" id="fos_user_registration_form_plainPassword_second" name="fos_user_registration_form[plainPassword][second]" required="required" placeholder="Potwierdzenie hasła">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-sm-2" for="fos_user_registration_form_email">Email:</label>
+                                            <div class="col-sm-10">
+                                                <input class="form-control" type="email" id="fos_user_registration_form_email" name="fos_user_registration_form[email]" required="required" placeholder="Email">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div class="col-sm-offset-2 col-sm-10">
+                                                <div class="checkbox">
+                                                    <label><input type="checkbox"     required="required"> Akceptuje regulamin</label>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div class="col-sm-offset-2 col-sm-10">
+                                                <button type="submit" value="{{ 'registration.submit'|trans }}" class="btn btn-default">Zarejestruj</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<br>
+<h2> Rejestracja nie dziala nalezy uzywac domyślnej</h2>
+    <br>
+        <form action="{{ path('fos_user_registration_register') }}" {{ form_enctype(form) }} method="POST" class="fos_user_registration_register">
+            {{ form_widget(form) }}
+            <div>
+                <input type="submit" value="{{ 'registration.submit'|trans }}" />
+            </div>
+        </form>
+
+{% endblock %}

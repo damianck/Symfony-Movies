@@ -9,7 +9,8 @@ security:
 
     providers:
         fos_userbundle:
-            id: fos_user.user_provider.username
+            id: fos_user.user_provider.username_email #logowanie za pomoca maila
+            #id: fos_user.user_provider.username # logowanie za pomoca loginu
 
     firewalls:
         main:
