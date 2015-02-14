@@ -2,17 +2,33 @@ shop_main_homepage:
     path:     /
     defaults: { _controller: ShopMainBundle:Default:index }
 
+shop_main_tag_create:
+        path: /tags/create
+        defaults:
+            _controller: ShopMainBundle:Tag:create
+
+
+shop_main_movies:
+    path: /movies
+    defaults:
+        _controller: ShopMainBundle:Movie:index
+
 shop_main_movies_create:
     path: /movies/create
     defaults:
         _controller: ShopMainBundle:Movie:create
 
-shop_main_tag_create:
-    path: /tags/create
+shop_main_edit:
+    path: /movies/{id}/edit
     defaults:
-        _controller: ShopMainBundle:Tag:create
+        _controller: ShopMainBundle:Movie:edit
 
-shop_main_movies_index:
-    path: /movies/index
+shop_main_delete:
+    path: /movies/{id}/delete
     defaults:
-        _controller: ShopMainBundle:Movie:index
+        _controller: ShopMainBundle:Movie:delete
+
+shop_main_details:
+    path: /movies/{id}/details
+    defaults:
+        _controller: ShopMainBundle:Movie:details

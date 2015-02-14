@@ -28,7 +28,7 @@ class TagController extends Controller
 		}
 		
 		return $this->render(
-			'ShopMainBundle:Tag:create.html.twig',
+			'ShopMainBundle:tag:create.html.twig',
 			array(
 				'form' => $form->createView(),
 			)

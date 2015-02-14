@@ -23,16 +23,14 @@
 				<div class="col-md-2"></div>
 				<div class="col-md-6"><a class="label" style="color:#080808" href="{{ path('shop_main_homepage') }}" ><h2> <b>Sklep z Filmami</b> </h2></a></div>
 			</div>
-			<div class="row">
-				<div class="col-md-9"></div>
-				<div class="col-md-1 col-md-offset-1"><a class="btn btn-primary btn-lg" href="{{ path('fos_user_security_login') }}" role="button">Logowanie</a> </div>
 
-			</div>
-			</div>
 
 		</div>
 	</header>
-
+	<!-- Navigation -->
+	{% block navigation %}
+		{% include 'ShopMainBundle::navigation.html.twig' %}
+	{% endblock %}
 		<div class="panel-body" style="min-height: 600px">
 			<section>
 				{% block content %}

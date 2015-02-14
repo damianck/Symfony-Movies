@@ -50,5 +50,21 @@ class MovieController extends Controller
 			)
 		);
 	}
+
+	public function aaa(Request $request)
+	{
+		$em = $this->getDoctrine()->getManager();
+		$repository = $em->getRepository("ShopMainBundle:Movie");
+
+		$collectionFeeds = $repository->findAll();
+
+
+		return $this->render(
+			'ShopMainBundle:Movie:index.html.twig',
+			array(
+				'movies' => $collectionFeeds,
+			)
+		);
+	}
 	
 }
