@@ -2,10 +2,7 @@ shop_main_homepage:
     path:     /
     defaults: { _controller: ShopMainBundle:Default:index }
 
-shop_main_categories_create:
-        path: /categories/create
-        defaults:
-            _controller: ShopMainBundle:Category:create
+
 
 
 shop_main_movies:
@@ -18,17 +15,64 @@ shop_main_movies_create:
     defaults:
         _controller: ShopMainBundle:Movie:create
 
-shop_main_edit:
+shop_main_movies_edit:
     path: /movies/{id}/edit
     defaults:
         _controller: ShopMainBundle:Movie:edit
 
-shop_main_delete:
+shop_main_movies_delete:
     path: /movies/{id}/delete
     defaults:
         _controller: ShopMainBundle:Movie:delete
 
-shop_main_details:
+shop_main_movies_details:
     path: /movies/{id}/details
     defaults:
         _controller: ShopMainBundle:Movie:details
+
+
+
+
+
+shop_main_categories:
+        path: /categories
+        defaults:
+            _controller: ShopMainBundle:Category:index
+
+shop_main_categories_create:
+        path: /categories/create
+        defaults:
+            _controller: ShopMainBundle:Category:create
+
+
+
+
+
+
+shop_main_actors:
+       path: /actors
+       defaults:
+           _controller: ShopMainBundle:Actor:index
+
+shop_main_actors_create:
+       path: /actors/create
+       defaults:
+           _controller: ShopMainBundle:Actor:create
+
+
+
+
+
+
+shop_main_reviews:
+      path: /reviews
+      defaults:
+          _controller: ShopMainBundle:Review:index
+
+shop_main_reviews_create:
+      path: /reviews/create
+      defaults:
+          _controller: ShopMainBundle:Review:create
+
+
+

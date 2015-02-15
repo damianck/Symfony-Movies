@@ -4,7 +4,7 @@
 	<h1>Lista Filmów</h1>
 	<ul>
 	{% for item in movies %}
-		<li> {{ item.title|upper }} - {{ item.title }} </li>
+		<li> {{ item.title|upper }} - {{ item.content }} </li>
 
 	{% endfor %}
 {% endblock %}

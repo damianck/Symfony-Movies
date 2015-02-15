@@ -20,6 +20,10 @@ class Movie
      * @ORM\Column(type="string", length=255)
      */
 	protected $title;
+    /**
+     * @ORM\Column(type="integer")
+     */
+    protected $numberOfSales;
 	/**
 	 * @ORM\Column(type="text")
 	 */
@@ -37,15 +41,15 @@ class Movie
      */
     protected $stream;
 	/**
-     * @ORM\OneToMany(targetEntity="Shop\MainBundle\Entity\Category", mappedBy="movie")
+     * @ORM\ManyToMany(targetEntity="Shop\MainBundle\Entity\Category")
      */
 	protected $categories;
     /**
-     * @ORM\OneToMany(targetEntity="Shop\MainBundle\Entity\Actor", mappedBy="movie")
+     * @ORM\ManyToMany(targetEntity="Shop\MainBundle\Entity\Actor")
      */
     protected $actors;
     /**
-     * @ORM\OneToMany(targetEntity="Shop\MainBundle\Entity\Review", mappedBy="movie")
+     * @ORM\ManyToMany(targetEntity="Shop\MainBundle\Entity\Review", mappedBy="movie")
      */
     protected $reviews;
 
@@ -95,6 +99,30 @@ class Movie
     public function getTitle()
     {
         return $this->title;
+    }
+
+    //---------------------------------------------------- NumberOfSales
+
+    /**
+     * Set numberOfSales
+     *
+     * @param string $numberOfSales
+     * @return Movie
+     */
+    public function setNumberOfSales($numberOfSales)
+    {
+        $this->numberOfSales = $numberOfSales;
+
+        return $this;
+    }
+    /**
+     * Get numberOfSales
+     *
+     * @return string
+     */
+    public function getNumberOfSales()
+    {
+        return $this->numberOfSales;
     }
 
     //---------------------------------------------------- Description

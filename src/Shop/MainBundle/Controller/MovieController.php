@@ -12,6 +12,8 @@ class MovieController extends Controller
 	public function createAction(Request $request)
 	{
 		$movie = new Movie();
+		$movie->setNumberOfSales(0);
+
 
 		$form = $this->createForm(
 			new MovieType(),
@@ -51,7 +53,39 @@ class MovieController extends Controller
 		);
 	}
 
-	public function aaa(Request $request)
+	public function detailsAction(Request $request)
+	{
+		$em = $this->getDoctrine()->getManager();
+		$repository = $em->getRepository("ShopMainBundle:Movie");
+
+		$collectionFeeds = $repository->findAll();
+
+
+		return $this->render(
+			'ShopMainBundle:Movie:index.html.twig',
+			array(
+				'movies' => $collectionFeeds,
+			)
+		);
+	}
+
+	public function editAction(Request $request)
+	{
+		$em = $this->getDoctrine()->getManager();
+		$repository = $em->getRepository("ShopMainBundle:Movie");
+
+		$collectionFeeds = $repository->findAll();
+
+
+		return $this->render(
+			'ShopMainBundle:Movie:index.html.twig',
+			array(
+				'movies' => $collectionFeeds,
+			)
+		);
+	}
+
+	public function deleteAction(Request $request)
 	{
 		$em = $this->getDoctrine()->getManager();
 		$repository = $em->getRepository("ShopMainBundle:Movie");

@@ -26,10 +26,6 @@ class Actor {
      */
     protected $lastName;
 
-    /**
-     * @ORM\ManyToOne(targetEntity="Movie", inversedBy="actors")
-     */
-    protected $movie;
 
 
 
@@ -61,16 +57,6 @@ class Actor {
         return $this->lastName;
     }
 
-    public function getMovie()
-    {
-        $this->movie;
-    }
-
-    public function setMovie($movie)
-    {
-        $this->movie = $movie;
-        return $this;
-    }
 
 
     public function __toString()

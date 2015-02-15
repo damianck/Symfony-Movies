@@ -6,7 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class MovieType extends AbstractType
+class ReviewType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -15,23 +15,18 @@ class MovieType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('title')
-            ->add('description')
-			->add('price')
-            ->add('cover')
-            ->add('stream')
-            ->add('categories')
-            ->add('actors')
-            ;
+            ->add('content')
+            ->add('movie')
+        ;
     }
-    
+
     /**
      * @param OptionsResolverInterface $resolver
      */
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Shop\MainBundle\Entity\Movie'
+            'data_class' => 'Shop\MainBundle\Entity\Review'
         ));
     }
 
@@ -40,6 +35,6 @@ class MovieType extends AbstractType
      */
     public function getName()
     {
-        return 'shop_mainbundle_movie';
+        return 'shop_mainbundle_review';
     }
 }

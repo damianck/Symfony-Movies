@@ -1,0 +1,22 @@
+{% extends 'ShopMainBundle::layout.html.twig' %}
+
+{% block content %}
+	<h1>Dodawnie Aktora!</h1>
+	<form method="POST">
+		{{ form_row(form._token) }}
+		{#{{ form_row(form) }}#}
+		{#{{ form_row(form.lastName)}}#}
+
+		<div>
+			<label for="shop_mainbundle_actor_firstName">Imię</label>
+			<input type="text" id="shop_mainbundle_actor_firstName" name="shop_mainbundle_actor[firstName]" required="required" maxlength="255" >
+		</div>
+
+		<div>
+			<label for="shop_mainbundle_actor_lastName">Nazwisko</label>
+			<input type="text" id="shop_mainbundle_actor_lastName" name="shop_mainbundle_actor[lastName]" required="required" maxlength="255" >
+		</div>
+		{#{{  form_errors ( form )  }}#}
+		<button type="submit">Dodaj Aktora</button>
+	</form>
+{% endblock %}

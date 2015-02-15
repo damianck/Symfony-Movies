@@ -21,11 +21,7 @@ class Category
      * @ORM\Column(type="string", length=255)
      */
 	protected $name;
-	
-	/**
-     * @ORM\ManyToOne(targetEntity="Movie", inversedBy="categories")
-     */
-    protected $movie;
+
 
 
 
@@ -44,17 +40,6 @@ class Category
 	public function getName()
 	{
 		return $this->name;
-	}
-
-	public function getMovie()
-	{
-		$this->movie;
-	}
-	
-	public function setMovie($movie)
-	{
-		$this->movie = $movie;
-		return $this;
 	}
 	
 
