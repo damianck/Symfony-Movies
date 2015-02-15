@@ -1,7 +1,7 @@
 {% extends 'ShopMainBundle::layout.html.twig' %}
 
 {% block content %}
-	<h1>Lista Filmów</h1>
+	<h3>Lista dostępnych katergorii filmów</h3>
 	<ul>
 	{% for item in movies %}
 		<li> {{ item.title|upper }} - {{ item.content }} </li>

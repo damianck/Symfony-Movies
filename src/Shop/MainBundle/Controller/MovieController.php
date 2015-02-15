@@ -42,13 +42,13 @@ class MovieController extends Controller
 		$em = $this->getDoctrine()->getManager();
 		$repository = $em->getRepository("ShopMainBundle:Movie");
 
-		$collectionFeeds = $repository->findAll();
+		$collectionMovies = $repository->findAll();
 
 
 		return $this->render(
 			'ShopMainBundle:Movie:index.html.twig',
 			array(
-				'movies' => $collectionFeeds,
+				'movies' => $collectionMovies,
 			)
 		);
 	}
@@ -58,13 +58,13 @@ class MovieController extends Controller
 		$em = $this->getDoctrine()->getManager();
 		$repository = $em->getRepository("ShopMainBundle:Movie");
 
-		$collectionFeeds = $repository->findAll();
+		$collectionMovies = $repository->findAll();
 
 
 		return $this->render(
 			'ShopMainBundle:Movie:index.html.twig',
 			array(
-				'movies' => $collectionFeeds,
+				'movies' => $collectionMovies,
 			)
 		);
 	}
@@ -74,13 +74,13 @@ class MovieController extends Controller
 		$em = $this->getDoctrine()->getManager();
 		$repository = $em->getRepository("ShopMainBundle:Movie");
 
-		$collectionFeeds = $repository->findAll();
+		$collectionMovies = $repository->findAll();
 
 
 		return $this->render(
 			'ShopMainBundle:Movie:index.html.twig',
 			array(
-				'movies' => $collectionFeeds,
+				'movies' => $collectionMovies,
 			)
 		);
 	}
@@ -90,13 +90,13 @@ class MovieController extends Controller
 		$em = $this->getDoctrine()->getManager();
 		$repository = $em->getRepository("ShopMainBundle:Movie");
 
-		$collectionFeeds = $repository->findAll();
+		$collectionMovies = $repository->findAll();
 
 
 		return $this->render(
 			'ShopMainBundle:Movie:index.html.twig',
 			array(
-				'movies' => $collectionFeeds,
+				'movies' => $collectionMovies,
 			)
 		);
 	}

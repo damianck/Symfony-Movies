@@ -40,13 +40,13 @@ class ActorController extends Controller
         $em = $this->getDoctrine()->getManager();
         $repository = $em->getRepository("ShopMainBundle:Actor");
 
-        $collectionFeeds = $repository->findAll();
+        $collectionActors = $repository->findAll();
 
 
         return $this->render(
             'ShopMainBundle:Actor:index.html.twig',
             array(
-                'movies' => $collectionFeeds,
+                'movies' => $collectionActors,
             )
         );
     }

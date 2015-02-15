@@ -1,0 +1,21 @@
+{% extends "@ShopMain/layout.html.twig" %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block content %}
+    <p>
+        <h3>Rejestracja powiodła się!</h3>
+        <br>
+        <h4>Zostałeś zalogowany na nowo utworzone konto. <br><br> Informacje o nowym koncie:</h4>
+
+         <h3><small>Nazwa użytkownika  &nbsp &nbsp &nbsp</small>{{  user.username }}</h3>
+         <h3><small>Adres email &nbsp &nbsp &nbsp</small>{{  user.email }}</h3>
+    </p>
+
+
+    <br>
+    {% if app.session is not empty %}
+        {% set targetUrl = app.session.get('_security.' ~ app.security.token.providerKey ~ '.target_path') %}
+        {% if targetUrl is not empty %}<p><a class="btn btn-primary btn-lg" href="{{ targetUrl }}" role="button">Powrót</a></p>{% endif %}
+    {% endif %}
+{% endblock content %}

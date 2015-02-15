@@ -34,4 +34,20 @@ class CategoryController extends Controller
 			)
 		);
 	}
+
+	public function indexAction(Request $request)
+	{
+		$em = $this->getDoctrine()->getManager();
+		$repository = $em->getRepository("ShopMainBundle:Category");
+
+		$collectionCategories = $repository->findAll();
+
+
+		return $this->render(
+			'ShopMainBundle:Category:index.html.twig',
+			array(
+				'movies' => $collectionCategories,
+			)
+		);
+	}
 }

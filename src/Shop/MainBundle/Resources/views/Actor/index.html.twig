@@ -1,12 +1,11 @@
 {% extends 'ShopMainBundle::layout.html.twig' %}
 
 {% block content %}
-	<h1>Lista Filmów</h1>
+	<h3>Lista wszystkich aktorów</h3>
 	<ul>
 	{% for item in movies %}
 		<li> {{ item.lastName }}  {{ item.firstName }}
-			<ul>
-				<li>    </li>
+
 		</li>
 
 	{% endfor %}

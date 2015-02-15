@@ -19,15 +19,21 @@
 	<body >
 		<div class="container">
 			<div class="row row-offcanvas row-offcanvas-right">
-				<div class="col-xs-12 col-sm-9">
 
 					{% block navigation %}
 						{% include 'ShopMainBundle::navigation.html.twig' %}
 					{% endblock %}
 
-
 					</br></br></br></br>
 
+
+					<header>
+
+						<div class="jumbotron">
+							<h1>Witaj!</h1>
+							<p>Tylko u nas możesz wypożyczyć interesujące filmy bez wychodzenia z domu.</p>
+						</div>
+					</header>
 
 					<section>
 						{% block content %}
@@ -35,8 +41,6 @@
 						{% endblock %}
 					</section>
 
-
-				</div>
 			</div>
 		</div>
 		<footer class="panel-footer" style="position: absolute; bottom: 0; width: 100%">
