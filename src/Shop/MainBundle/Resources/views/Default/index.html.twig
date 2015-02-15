@@ -13,14 +13,6 @@
 					<button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Toggle nav</button>
 				</p>
 
-				{#<header>#}
-
-					{#<div class="jumbotron">#}
-						{#<h1>Witaj!</h1>#}
-						{#<p>Tylko u nas możesz wypożyczyć interesujące filmy bez wychodzenia z domu.</p>#}
-					{#</div>#}
-				{#</header>#}
-
 				<div class="row">
 					<div class="col-xs-6 col-lg-4">
 						<div class="panel panel-default">
@@ -46,27 +38,21 @@
 							</div>
 							<div class="panel-body">
 								<ul class="media-list">
+									{% for item in allMovies %}
+										<li>
+											<div class="alert alert-warning" role="alert">
+												<div class="media-left">
+													<a href="{{ path('shop_main_movies_details', { 'id': item.id }) }}">
+														<img class="media-object" width="60" height="90" src="{{ item.cover }}" alt="...">
+													</a>
+												</div>
+												<div class="media-body" style="vertical-align: middle;">
+													<a class="navbar-brand" style="text-align: center; width: 100%; color: #000000"  href="{{ path('shop_main_movies_details', { 'id': item.id }) }}">{{ item.title }}</a>
+												</div>
+											</div>
 
-									<li class="media">
-										<div class="media-left">
-											<a href="#">
-												<img class="media-object" src="..." alt="...">
-											</a>
-										</div>
-										<div class="media-body">
-											<h4 class="media-heading">Media heading</h4>
-										</div>
-									</li>
-									<li class="media">
-										<div class="media-left">
-											<a href="#">
-												<img class="media-object" src="..." alt="...">
-											</a>
-										</div>
-										<div class="media-body">
-											<h4 class="media-heading">Media heading</h4>
-										</div>
-									</li>
+										</li>
+									{% endfor %}
 								</ul>
 							</div>
 						</div>
@@ -94,7 +80,23 @@
 								<h4>Najpopularniejsze</h4>
 							</div>
 							<div class="panel-body">
-								Panel content
+								<ul class="media-list">
+									{% for item in mostPopularMovies %}
+										<li>
+											<div class="alert alert-success" role="alert">
+												<div class="media-left">
+													<a href="{{ path('shop_main_movies_details', { 'id': item.id }) }}">
+														<img class="media-object" width="60" height="90" src="{{ item.cover }}" alt="...">
+													</a>
+												</div>
+												<div class="media-body" style="vertical-align: middle;">
+													<a class="navbar-brand" style="text-align: center; width: 100%; color: #000000"  href="{{ path('shop_main_movies_details', { 'id': item.id }) }}">{{ item.title }}</a>
+												</div>
+											</div>
+
+										</li>
+									{% endfor %}
+								</ul>
 							</div>
 						</div>
 					</div><!--/.col-xs-6.col-lg-4-->
@@ -120,7 +122,23 @@
 								<h4>Najczęściej recenzowane</h4>
 							</div>
 							<div class="panel-body">
-								Panel content
+								<ul class="media-list">
+									{% for item in mostReviewMovies %}
+										<li>
+											<div class="alert alert-info" role="alert">
+												<div class="media-left">
+													<a href="{{ path('shop_main_movies_details', { 'id': item.id }) }}">
+														<img class="media-object" width="60" height="90" src="{{ item.cover }}" alt="...">
+													</a>
+												</div>
+												<div class="media-body" style="vertical-align: middle;">
+													<a class="navbar-brand" style="text-align: center; width: 100%; color: #000000"  href="{{ path('shop_main_movies_details', { 'id': item.id }) }}">{{ item.title }}</a>
+												</div>
+											</div>
+
+										</li>
+									{% endfor %}
+								</ul>
 							</div>
 						</div>
 					</div><!--/.col-xs-6.col-lg-4-->
