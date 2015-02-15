@@ -1,22 +1,30 @@
 {% extends 'ShopMainBundle::layout.html.twig' %}
 
 {% block content %}
-	<h1>Dodawnie Aktora!</h1>
+	<h1 class="col-md-offset-5 col-centered">Dodawanie Aktora!</h1>
 	<form method="POST">
 		{{ form_row(form._token) }}
 		{#{{ form_row(form) }}#}
 		{#{{ form_row(form.lastName)}}#}
-
-		<div>
-			<label for="shop_mainbundle_actor_firstName">Imię</label>
-			<input type="text" id="shop_mainbundle_actor_firstName" name="shop_mainbundle_actor[firstName]" required="required" maxlength="255" >
+		<br/><table border="0" class="col-md-offset-5 col-centered" style="border-collapse:collapse;">
+			<tr/>
+		<div >
+			<td ><label for="shop_mainbundle_actor_firstName">Imię:</label></td>
+			</td><td><input type="text" id="shop_mainbundle_actor_firstName" name="shop_mainbundle_actor[firstName]" required="required" maxlength="255" >
 		</div>
+			</tr>
+			<tr><td>&nbsp</td></tr>
+			<tr>
+		<div >
+			<td><label for="shop_mainbundle_actor_lastName" >Nazwisko:&nbsp‏</label></td>
 
-		<div>
-			<label for="shop_mainbundle_actor_lastName">Nazwisko</label>
-			<input type="text" id="shop_mainbundle_actor_lastName" name="shop_mainbundle_actor[lastName]" required="required" maxlength="255" >
+			<td><input type="text" id="shop_mainbundle_actor_lastName" name="shop_mainbundle_actor[lastName]" required="required" maxlength="255" >
+			</td>
 		</div>
+			</tr>
+		</table><br />
 		{#{{  form_errors ( form )  }}#}
-		<button type="submit">Dodaj Aktora</button>
+		<button class="col-md-offset-6 col-centered" type="submit">Dodaj Aktora</button>
+
 	</form>
 {% endblock %}
