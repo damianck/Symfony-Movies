@@ -11,42 +11,43 @@
 		<title>{% block title %}{% endblock %}</title>
 
 		{% block stylesheets %}
-
 			<link href="{{ SRC }}/css/bootstrap.min.css" rel="stylesheet">
 			<link href="{{ SRC }}/css/1-col-portfolio.css" rel="stylesheet">
 		{% endblock %}
+
 	</head>
-	<body>
-	<header>
-		<div class="jumbotron">
-			<div class="row">
-				<div class="col-md-2"></div>
-				<div class="col-md-6"><a class="label" style="color:#080808" href="{{ path('shop_main_homepage') }}" ><h2> <b>Sklep z Filmami</b> </h2></a></div>
+	<body >
+		<div class="container">
+			<div class="row row-offcanvas row-offcanvas-right">
+				<div class="col-xs-12 col-sm-9">
+
+					{% block navigation %}
+						{% include 'ShopMainBundle::navigation.html.twig' %}
+					{% endblock %}
+
+
+					</br></br></br></br>
+
+
+					<section>
+						{% block content %}
+
+						{% endblock %}
+					</section>
+
+
+				</div>
 			</div>
-
-
 		</div>
-	</header>
-	<!-- Navigation -->
-	{% block navigation %}
-		{% include 'ShopMainBundle::navigation.html.twig' %}
-	{% endblock %}
-		<div class="panel-body" style="min-height: 600px">
-			<section>
-				{% block content %}
-
-				{% endblock %}
-			</section>
-		</div>
-
-		<div >
-			<footer class="panel-footer">
-				<p class="pager">
+		<footer class="panel-footer" style="position: absolute; bottom: 0; width: 100%">
+			<p class="pager">
 				Projekt zaliczeniowy przedmiotu "Pracownia Programowanie 5" <br>
 				Autorzy:
-					<b> Marcin Zgoda, Damian Wtorek, Krzysztof Sarota.</b>
-				</p>
-			</footer>
-		</div>
+				<b> Marcin Zgoda, Damian Wtorek, Krzysztof Sarota.</b>
+			</p>
+		</footer>
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+		<script src="{{ asset('bundles/shopmain/js/bootstrap.js') }}"></script>
 	</body>
 </html>
