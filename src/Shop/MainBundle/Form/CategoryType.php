@@ -6,7 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class TagType extends AbstractType
+class CategoryType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -16,7 +16,7 @@ class TagType extends AbstractType
     {
         $builder
             ->add('name')
-			->add('feed')
+			->add('movie')
         ;
     }
     
@@ -26,7 +26,7 @@ class TagType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Shop\MainBundle\Entity\Tag'
+            'data_class' => 'Shop\MainBundle\Entity\Category'
         ));
     }
 
@@ -35,6 +35,6 @@ class TagType extends AbstractType
      */
     public function getName()
     {
-        return 'shop_mainbundle_tag';
+        return 'shop_mainbundle_category';
     }
 }

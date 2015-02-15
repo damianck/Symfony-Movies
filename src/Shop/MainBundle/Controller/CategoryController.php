@@ -3,19 +3,19 @@
 namespace Shop\MainBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Shop\MainBundle\Entity\Tag;
-use Shop\MainBundle\Form\TagType;
+use Shop\MainBundle\Entity\Category;
+use Shop\MainBundle\Form\CategoryType;
 use Symfony\Component\HttpFoundation\Request;
 
-class TagController extends Controller
+class CategoryController extends Controller
 {
 	public function createAction(Request $request)
 	{	
-		$tag = new Tag();
+		$category = new Category();
 		
 		$form = $this->createForm(
-			new TagType(),
-			$tag
+			new CategoryType(),
+			$category
 		);
 		
 		if ($request->isMethod('POST')
@@ -23,12 +23,12 @@ class TagController extends Controller
 		&& $form->isValid()
 		) {
 			$em = $this->getDoctrine()->getManager();
-			$em->persist($tag);
+			$em->persist($category);
 			$em->flush();
 		}
 		
 		return $this->render(
-			'ShopMainBundle:tag:create.html.twig',
+			'ShopMainBundle:Category:create.html.twig',
 			array(
 				'form' => $form->createView(),
 			)

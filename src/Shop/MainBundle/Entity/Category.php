@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
   * @ORM\Entity
   * @ORM\Table()
   */
-class Tag
+class Category
 {
 	/**
      * @ORM\Column(type="integer")
@@ -23,37 +23,41 @@ class Tag
 	protected $name;
 	
 	/**
-     * @ORM\ManyToOne(targetEntity="Movie", inversedBy="tags")
+     * @ORM\ManyToOne(targetEntity="Movie", inversedBy="categories")
      */
-    protected $feed;
-	
-	public function getFeed()
-	{
-		$this->feed;
-	}
-	
-	public function setFeed($feed)
-	{
-		$this->feed = $feed;
-		return $this;
-	}
-	
+    protected $movie;
+
+
+
+
 	public function getId()
 	{
 		return $this->id;
 	}
-	
+
 	public function setName($name)
 	{
 		$this->name = $name;
 		return $this;
 	}
-	
+
 	public function getName()
 	{
 		return $this->name;
 	}
+
+	public function getMovie()
+	{
+		$this->movie;
+	}
 	
+	public function setMovie($movie)
+	{
+		$this->movie = $movie;
+		return $this;
+	}
+	
+
 	public function __toString()
 	{
 		return $this->getName();

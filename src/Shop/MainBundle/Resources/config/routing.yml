@@ -2,10 +2,10 @@ shop_main_homepage:
     path:     /
     defaults: { _controller: ShopMainBundle:Default:index }
 
-shop_main_tag_create:
-        path: /tags/create
+shop_main_categories_create:
+        path: /categories/create
         defaults:
-            _controller: ShopMainBundle:Tag:create
+            _controller: ShopMainBundle:Category:create
 
 
 shop_main_movies:

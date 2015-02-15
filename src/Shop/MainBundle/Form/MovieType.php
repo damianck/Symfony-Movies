@@ -16,8 +16,13 @@ class MovieType extends AbstractType
     {
         $builder
             ->add('title')
-            ->add('content')
-			->add('tags')
+            ->add('description')
+			->add('price')
+            ->add('cover')
+            ->add('stream')
+            ->add('categories')
+            ->add('actors')
+            ->add('reviews')
         ;
     }
     

@@ -16,7 +16,6 @@ class Movie
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
-	
 	/**
      * @ORM\Column(type="string", length=255)
      */
@@ -24,33 +23,46 @@ class Movie
 	/**
 	 * @ORM\Column(type="text")
 	 */
-	protected $content;
-	/**
-	 * @ORM\Column(type="datetime")
-	 */
-	protected $createdAt;
-	
-	/**
-     * @ORM\OneToMany(targetEntity="Shop\MainBundle\Entity\Tag", mappedBy="movie")
+	protected $description;
+    /**
+     * @ORM\Column(type="text")
      */
-	protected $tags;
-	
-	public function getTags()
-	{
-		return $this->tags;
-	}
-	
-	public function setTags($tags)
-	{
-		$this->tags = $tags;
-		return $this;
-	}
-	
-	public function __construct()
-	{
-		$this->createdAt = new \DateTime();
-		$this->tags = new ArrayCollection();
-	}
+    protected $price;
+    /**
+     * @ORM\Column(type="text")
+     */
+    protected $cover;
+    /**
+     * @ORM\Column(type="text")
+     */
+    protected $stream;
+	/**
+     * @ORM\OneToMany(targetEntity="Shop\MainBundle\Entity\Category", mappedBy="movie")
+     */
+	protected $categories;
+    /**
+     * @ORM\OneToMany(targetEntity="Shop\MainBundle\Entity\Actor", mappedBy="movie")
+     */
+    protected $actors;
+    /**
+     * @ORM\OneToMany(targetEntity="Shop\MainBundle\Entity\Review", mappedBy="movie")
+     */
+    protected $reviews;
+
+
+
+    //---------------------------------------------------- Constructor
+
+    public function __construct( )
+    {
+        $this->categories = new ArrayCollection();
+        $this->actors = new ArrayCollection();
+        $this->reviews = new ArrayCollection();
+    }
+
+
+    //---------------------------------------------------- Id
+
     /**
      * Get id
      *
@@ -60,6 +72,8 @@ class Movie
     {
         return $this->id;
     }
+
+    //---------------------------------------------------- Title
 
     /**
      * Set title
@@ -73,7 +87,6 @@ class Movie
 
         return $this;
     }
-
     /**
      * Get title
      *
@@ -84,54 +97,149 @@ class Movie
         return $this->title;
     }
 
+    //---------------------------------------------------- Description
+
     /**
-     * Set content
+     * Set description
      *
-     * @param string $content
+     * @param string $description
      * @return Movie
      */
-    public function setContent($content)
+    public function setDescription($description)
     {
-        $this->content = $content;
+        $this->description = $description;
 
         return $this;
     }
-
     /**
-     * Get content
+     * Get description
      *
      * @return string 
      */
-    public function getContent()
+    public function getDescription()
     {
-        return $this->content;
+        return $this->description;
     }
 
+    //---------------------------------------------------- Price
+
     /**
-     * Set createdAt
+     * Set price
      *
-     * @param \DateTime $createdAt
+     * @param string $price
      * @return Movie
      */
-    public function setCreatedAt($createdAt)
+    public function setPrice($price)
     {
-        $this->createdAt = $createdAt;
+        $this->price = $price;
 
         return $this;
     }
 
     /**
-     * Get createdAt
+     * Get price
      *
-     * @return \DateTime 
+     * @return string
      */
-    public function getCreatedAt()
+    public function getPrice()
     {
-        return $this->createdAt;
+        return $this->price;
     }
+
+    //---------------------------------------------------- Cover
+
+    /**
+     * Set cover
+     *
+     * @param string $cover
+     * @return Movie
+     */
+    public function setCover($cover)
+    {
+        $this->cover = $cover;
+
+        return $this;
+    }
+    /**
+     * Get cover
+     *
+     * @return string
+     */
+    public function getCover()
+    {
+        return $this->cover;
+    }
+
+    //---------------------------------------------------- Stream
+
+    /**
+     * Set stream
+     *
+     * @param string $stream
+     * @return Movie
+     */
+    public function setStream($stream)
+    {
+        $this->stream = $stream;
+
+        return $this;
+    }
+
+    /**
+     * Get stream
+     *
+     * @return string
+     */
+    public function getStream()
+    {
+        return $this->stream;
+    }
+
+    //---------------------------------------------------- Categories
+
+    public function getCategories()
+    {
+        return $this->categories;
+    }
+
+    public function setCategories($categories)
+    {
+        $this->categories = $categories;
+        return $this;
+    }
+
+    //---------------------------------------------------- Actors
+
+    public function getActors()
+    {
+        return $this->actors;
+    }
+
+    public function setActors($actors)
+    {
+        $this->actors = $actors;
+        return $this;
+    }
+
+    //---------------------------------------------------- Reviews
+
+    public function getReviews()
+    {
+        return $this->reviews;
+    }
+
+    public function setReviews($reviews)
+    {
+        $this->reviews = $reviews;
+        return $this;
+    }
+
+
+    //---------------------------------------------------- ToString
 	
 	public function __toString()
 	{
 		return $this->title;
 	}
+
 }

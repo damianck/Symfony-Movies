@@ -10,14 +10,14 @@ use Symfony\Component\HttpFoundation\Request;
 class MovieController extends Controller
 {
 	public function createAction(Request $request)
-	{	
+	{
 		$movie = new Movie();
-		
+
 		$form = $this->createForm(
 			new MovieType(),
 			$movie
 		);
-		
+
 		if ($request->isMethod('POST')
 		&& $form->handleRequest($request)
 		&& $form->isValid()
@@ -26,7 +26,7 @@ class MovieController extends Controller
 			$em->persist($movie);
 			$em->flush();
 		}
-		
+
 		return $this->render(
 			'ShopMainBundle:Movie:create.html.twig',
 			array(
@@ -34,15 +34,15 @@ class MovieController extends Controller
 			)
 		);
 	}
-	
+
 	public function indexAction(Request $request)
-	{	
+	{
 		$em = $this->getDoctrine()->getManager();
 		$repository = $em->getRepository("ShopMainBundle:Movie");
-		
+
 		$collectionFeeds = $repository->findAll();
-		
-		
+
+
 		return $this->render(
 			'ShopMainBundle:Movie:index.html.twig',
 			array(
@@ -66,5 +66,5 @@ class MovieController extends Controller
 			)
 		);
 	}
-	
+
 }
