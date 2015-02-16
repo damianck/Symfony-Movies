@@ -1,10 +1,34 @@
 {% extends 'ShopMainBundle::layout.html.twig' %}
 
 {% block content %}
-	<h3>Lista dostępnych katergorii filmów</h3>
-	<ul>
-	{% for item in movies %}
-		<li> {{ item.title|upper }} - {{ item.content }} </li>
+	<div class="panel panel-default">
 
-	{% endfor %}
+		<div class="panel-heading"><h4>Lista wszystkich kategorii</h4></div>
+		<div class="panel-body">
+			<a href="{{ path('shop_main_categories_create') }}" class="btn btn-primary" role="button">Dodaj kategorię</a>
+		</div>
+
+
+		{#<!-- Table -->#}
+		<table   class="table table-striped table-bordered"   >
+
+			<tr>
+
+				<td><b>No.</b></td>
+				<td><b>Kategoria</b></td>
+				<td><b>Edycja</b></td>
+
+			</tr>
+			{% for item in movies %}
+				<tr>
+					<td style="width: 70px">{{ loop.index }}</td>
+					<td>{{ item.name }}</td>
+					<td style="width: 80px">
+						<a href="{{ path('shop_main_categories_edit', {'id': item.id }) }}" class="btn btn-primary btn-sm" role="button">Edytuj</a>
+					</td>
+				</tr>
+			{% endfor %}
+		</table>
+		<br/>
+	</div>
 {% endblock %}

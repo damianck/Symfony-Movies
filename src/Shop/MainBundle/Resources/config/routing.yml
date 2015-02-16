@@ -44,6 +44,11 @@ shop_main_categories_create:
         defaults:
             _controller: ShopMainBundle:Category:create
 
+shop_main_categories_edit:
+        path: /categories/{id}/edit
+        defaults:
+            _controller: ShopMainBundle:Category:edit
+
 
 
 
@@ -59,6 +64,10 @@ shop_main_actors_create:
        defaults:
            _controller: ShopMainBundle:Actor:create
 
+shop_main_actors_edit:
+       path: /actors/{id}/edit
+       defaults:
+           _controller: ShopMainBundle:Actor:edit
 
 
 

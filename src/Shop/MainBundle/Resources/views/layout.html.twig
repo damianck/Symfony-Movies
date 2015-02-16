@@ -11,7 +11,8 @@
 		<title>{% block title %}{% endblock %}</title>
 
 		{% block stylesheets %}
-			<link href="{{ SRC }}/css/bootstrap.min.css" rel="stylesheet">
+			<link href="{{ SRC }}/css/bootstrap.css" rel="stylesheet">
+			<link href="{{ asset('bundles/shopmain/css/bootstrap-table.css') }}" rel="stylesheet">
 			<link href="{{ SRC }}/css/1-col-portfolio.css" rel="stylesheet">
 		{% endblock %}
 
@@ -54,5 +55,7 @@
 
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 		<script src="{{ asset('bundles/shopmain/js/bootstrap.js') }}"></script>
+		<script src="{{ asset('bundles/shopmain/js/bootstrap-tab.js') }}"></script>
+
 	</body>
 </html>

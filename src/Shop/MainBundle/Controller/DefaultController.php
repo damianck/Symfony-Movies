@@ -6,15 +6,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class DefaultController extends Controller
 {
-    function compare($a, $b) {
-        $c = $a->getReviewsCount();
-        $d = $b->getReviewsCount();
-//        if ($c == $d) {
-//            return 0;
-//        }
-        return 1;
-    }
-
     public function indexAction()
     {
 
@@ -23,7 +14,16 @@ class DefaultController extends Controller
         $collectionAllMovies = $repository->findAll();
 
         $collectionMostPopularMovies = $em->getRepository("ShopMainBundle:Movie")->findBy(   array(), array('numberOfSales' => 'DESC') );
-        $collectionMostReviewMovies = $em->getRepository("ShopMainBundle:Movie")->findBy(   array(), array('numberOfReviews' => 'DESC') );
+
+        $collectionMostReviewMovies = $repository->findAll();
+
+
+        uasort($collectionMostReviewMovies, function($a, $b){
+            if ($a->getReviewsCount() == $b->getReviewsCount()) {
+                return 0;
+            }
+            return ($a->getReviewsCount() > $b->getReviewsCount()) ? -1 : 1;
+        });
 
 
         return $this->render(

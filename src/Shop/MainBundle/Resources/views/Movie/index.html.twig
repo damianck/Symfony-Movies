@@ -1,30 +1,44 @@
 {% extends 'ShopMainBundle::layout.html.twig' %}
 
 {% block content %}
-	<h1 class="col-md-offset-5 col-centered">Lista Filmów</h1>
+	<div class="panel panel-default">
 
-	<table class="col-md-offset-4 col-centered">
-		<tr>
-			<td><b>No.&nbsp&nbsp</b></td>
-			<td><b>Tytuł&nbsp&nbsp</b></td>
-			<td><b>Liczba sprzedanych&nbsp&nbsp</b></td>
-			<td><b>Cena&nbsp&nbsp</b></td>
-			<td><b>Aktor&nbsp&nbsp</b></td>
-			<td><b>Kategoria&nbsp&nbsp</b></td>
-			<td><b>Opis</b></td>
+		<div class="panel-heading"><h4>Lista wszystkich filmów</h4></div>
+		<div class="panel-body">
+			<a href="{{ path('shop_main_movies_create') }}" class="btn btn-primary" role="button">Dodaj Film</a>
+		</div>
 
-		</tr>
 
-	{% for item in movies %}
-		<tr>
-			<td>{{ loop.index }}&nbsp&nbsp</td>
-			<td>{{ item.title }}&nbsp&nbsp</td>
-			<td>{{ item.numberOfSales }}&nbsp&nbsp</td>
-			<td>{{ item.price }}&nbsp&nbsp</td>
-			<td>[[Tu mial sie pojawic aktor]]&nbsp&nbsp</td>
-			<td>[[Kategoria ]]&nbsp&nbsp</td>
-			<td>{{ item.description }}</td>
-		</tr>
-	{% endfor %}
-	</table><br/>
+		{#<!-- Table -->#}
+		<table   class="table table-striped table-bordered"   >
+
+			<tr>
+				<td><b>No.</b></td>
+				<td><b>Tytuł</b></td>
+				<td><b>Liczba sprzedaży</b></td>
+				<td><b>Cena</b></td>
+				<td><b>Kategoria</b></td>
+				<td><b>Edycja</b></td>
+			</tr>
+			{% for item in movies %}
+				<tr>
+					<td style="width: 70px">{{ loop.index }}</td>
+					<td>{{ item.title }}</td>
+					<td style="width: 150px">{{ item.numberOfSales }}</td>
+					<td style="width: 100px">{{ item.price }}</td>
+					<td>
+						<lu class="list list-unstyled">
+							{% for cat in item.categories %}
+								<li>{{ cat }}</li>
+							{% endfor %}
+						</lu>
+					</td>
+					<td style="width: 80px">
+						<a href="{{ path('shop_main_movies_edit', {'id': item.id }) }}" class="btn btn-primary btn-sm" role="button">Edytuj</a>
+					</td>
+				</tr>
+			{% endfor %}
+		</table>
+		<br/>
+	</div>
 {% endblock %}

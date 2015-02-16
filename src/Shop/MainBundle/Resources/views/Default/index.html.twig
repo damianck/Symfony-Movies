@@ -90,7 +90,12 @@
 													</a>
 												</div>
 												<div class="media-body" style="vertical-align: middle;">
-													<a class="navbar-brand" style="text-align: center; width: 100%; color: #000000"  href="{{ path('shop_main_movies_details', { 'id': item.id }) }}">{{ item.title }}</a>
+													<a class="navbar-brand" style="text-align: center; width: 100%; color: #000000"  href="{{ path('shop_main_movies_details', { 'id': item.id }) }}">
+														{{ item.title }}
+														<span class="badge">
+															{{ item.numberOfSales }}
+														</span>
+													</a>
 												</div>
 											</div>
 
@@ -132,7 +137,12 @@
 													</a>
 												</div>
 												<div class="media-body" style="vertical-align: middle;">
-													<a class="navbar-brand" style="text-align: center; width: 100%; color: #000000"  href="{{ path('shop_main_movies_details', { 'id': item.id }) }}">{{ item.title }}</a>
+													<a class="navbar-brand" style="text-align: center; width: 100%; color: #000000"  href="{{ path('shop_main_movies_details', { 'id': item.id }) }}">
+														{{ item.title }}
+														<span class="badge">
+															{{ item.getReviewsCount }}
+														</span>
+													</a>
 												</div>
 											</div>
 

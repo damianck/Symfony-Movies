@@ -3,7 +3,6 @@ namespace Shop\MainBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
-use Symfony\Component\Validator\Constraints\Count;
 
 /**
  * @ORM\Entity
@@ -25,10 +24,6 @@ class Movie
      * @ORM\Column(type="integer")
      */
     protected $numberOfSales;
-    /**
-     * @ORM\Column(type="integer")
-     */
-    protected $numberOfReviews;
 	/**
 	 * @ORM\Column(type="text")
 	 */
@@ -54,7 +49,7 @@ class Movie
      */
     protected $actors;
     /**
-     * @ORM\ManyToMany(targetEntity="Shop\MainBundle\Entity\Review", mappedBy="movie")
+     * @ORM\OneToMany(targetEntity="Shop\MainBundle\Entity\Review", mappedBy="movie")
      */
     protected $reviews;
 
@@ -130,29 +125,6 @@ class Movie
         return $this->numberOfSales;
     }
 
-    //---------------------------------------------------- NumberOfReviews
-
-    /**
-     * Set numberOfSales
-     *
-     * @param string $numberOfReviews
-     * @return Movie
-     */
-    public function setNumberOfReviews($numberOfReviews)
-    {
-        $this->numberOfReviews = $numberOfReviews;
-
-        return $this;
-    }
-    /**
-     * Get numberOfSales
-     *
-     * @return string
-     */
-    public function getNumberOfReviews()
-    {
-        return $this->numberOfReviews;
-    }
 
     //---------------------------------------------------- Description
 
@@ -285,6 +257,10 @@ class Movie
         return $this->reviews;
     }
 
+    public function getReviewsCount()
+    {
+        return $this->reviews->count();
+    }
 
     public function setReviews($reviews)
     {

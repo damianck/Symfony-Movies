@@ -1,37 +1,87 @@
 {% extends 'ShopMainBundle::layout.html.twig' %}
 
 {% block content %}
-	<h1 class="col-md-offset-5 col-centered">Dodawanie Aktora!</h1>
-	<form method="POST">
-		{{ form_row(form._token) }}
-		{#{{ form_row(form) }}#}
-		{#{{ form_row(form.lastName)}}#}
-		<br/><table border="0" class="col-md-offset-5 col-centered">
-			<tr/>
-		<div >
-			<td ><label for="shop_mainbundle_actor_firstName">Imię:</label></td>
-			</td><td><input type="text" id="shop_mainbundle_actor_firstName" name="shop_mainbundle_actor[firstName]" required="required" maxlength="255" >
-		</div>
-			</tr>
-			<tr><td>&nbsp</td></tr>
-			<tr>
-		<div >
-			<td><label for="shop_mainbundle_actor_lastName" >Nazwisko:&nbsp‏</label></td>
+	{#<h1 class="col-md-offset-5 col-centered">Dodawanie Aktora!</h1>#}
+	{#<form method="POST">#}
+		{#{{ form_row(form._token) }}#}
+		{#&#123;&#35;{{ form_row(form) }}&#35;&#125;#}
+		{#&#123;&#35;{{ form_row(form.lastName)}}&#35;&#125;#}
+		{#<br/><table border="0" class="col-md-offset-5 col-centered">#}
+			{#<tr/>#}
+		{#<div >#}
+			{#<td ><label for="shop_mainbundle_actor_firstName">Imię:</label></td>#}
+			{#</td><td><input type="text" id="shop_mainbundle_actor_firstName" name="shop_mainbundle_actor[firstName]" required="required" maxlength="255" >#}
+		{#</div>#}
+			{#</tr>#}
+			{#<tr><td>&nbsp</td></tr>#}
+			{#<tr>#}
+		{#<div >#}
+			{#<td><label for="shop_mainbundle_actor_lastName" >Nazwisko:&nbsp‏</label></td>#}
 
-			<td><input type="text" id="shop_mainbundle_actor_lastName" name="shop_mainbundle_actor[lastName]" required="required" maxlength="255" >
-			</td>
-		</div>
-			</tr>
-		</table><br />
-		{#{{  form_errors ( form )  }}#}
-		<button class="col-md-offset-6 col-centered" type="submit">Dodaj Aktora</button>
+			{#<td><input type="text" id="shop_mainbundle_actor_lastName" name="shop_mainbundle_actor[lastName]" required="required" maxlength="255" >#}
+			{#</td>#}
+		{#</div>#}
+			{#</tr>#}
+		{#</table><br />#}
+		{#&#123;&#35;{{  form_errors ( form )  }}&#35;&#125;#}
+		{#<button class="col-md-offset-6 col-centered" type="submit">Dodaj Aktora</button>#}
+		{#{% for flashMessage in app.session.flashbag.get('notice') %}#}
+		{#<div class="flash-notice" class="alert alert-info">#}
+			{#<button class="close" data-dismiss="alert">times</button>#}
+			{#{{ flashMessage }}#}
+		{#</div>#}
+		{#{% endfor %}#}
 
-		{% for flashMessage in app.session.flashbag.get('notice') %}
-		<div class="flash-notice" class="alert alert-info">
-			<button class="close" data-dismiss="alert">times</button>
-			{{ flashMessage }}
-		</div>
-		{% endfor %}
+	{#</form>#}
 
-	</form>
+
+	<div class="container">
+	<div class="row">
+		<div class="span12">
+			<div class="" id="loginModal">
+				<div class="modal-header">
+					<h3>Dodawanie aktora</h3>
+				</div>
+				<div class="modal-body">
+					<div class="well">
+						<div class="tab-pane active in" id="register">
+							<form id="tab" class="form-horizontal"  method="POST" >
+								{{ form_row(form._token) }}
+								<br>
+
+								<div class="form-group">
+									<label class="control-label col-sm-2" for="shop_mainbundle_actor_firstName">Imię:</label>
+									<div class="col-sm-10">
+										<input class="form-control" type="text" id="shop_mainbundle_actor_firstName" name="shop_mainbundle_actor[firstName]" required="required" maxlength="255" pattern=".{3,}" placeholder="Imię">
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="control-label col-sm-2" for="shop_mainbundle_actor_lastName">Nazwisko</label>
+									<div class="col-sm-10">
+										<input class="form-control" type="text" id="shop_mainbundle_actor_lastName" name="shop_mainbundle_actor[lastName]" required="required" pattern=".{3,}" placeholder="Nazwisko">
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="col-sm-offset-2 col-sm-10">
+										<button class="btn btn-default" type="submit">Dodaj Aktora</button>
+										{% for flashMessage in app.session.flashbag.get('notice') %}
+											<div class="flash-notice" class="alert alert-info">
+												<button class="close" data-dismiss="alert" >times</button>
+												{{ flashMessage }}
+											</div>
+										{% endfor %}
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+
+
 {% endblock %}
