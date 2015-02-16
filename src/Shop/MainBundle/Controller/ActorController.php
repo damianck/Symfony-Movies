@@ -50,4 +50,14 @@ class ActorController extends Controller
             )
         );
     }
+    public function updateAction(Request $request)
+    {
+
+
+
+
+
+
+    }
+
 }

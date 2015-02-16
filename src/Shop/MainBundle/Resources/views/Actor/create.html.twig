@@ -6,7 +6,7 @@
 		{{ form_row(form._token) }}
 		{#{{ form_row(form) }}#}
 		{#{{ form_row(form.lastName)}}#}
-		<br/><table border="0" class="col-md-offset-5 col-centered" style="border-collapse:collapse;">
+		<br/><table border="0" class="col-md-offset-5 col-centered">
 			<tr/>
 		<div >
 			<td ><label for="shop_mainbundle_actor_firstName">Imię:</label></td>
@@ -25,6 +25,13 @@
 		</table><br />
 		{#{{  form_errors ( form )  }}#}
 		<button class="col-md-offset-6 col-centered" type="submit">Dodaj Aktora</button>
+
+		{% for flashMessage in app.session.flashbag.get('notice') %}
+		<div class="flash-notice" class="alert alert-info">
+			<button class="close" data-dismiss="alert">times</button>
+			{{ flashMessage }}
+		</div>
+		{% endfor %}
 
 	</form>
 {% endblock %}
