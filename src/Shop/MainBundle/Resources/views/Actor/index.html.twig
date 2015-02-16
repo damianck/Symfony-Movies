@@ -1,12 +1,23 @@
 {% extends 'ShopMainBundle::layout.html.twig' %}
 
 {% block content %}
-	<h3>Lista wszystkich aktorów</h3>
-	<ul>
+
+
+	<h2 class="col-md-offset-4 col-centered">Lista wszystkich aktorów</h2>
+	<table border="0" class="col-md-offset-5 col-centered">
+		<tr>
+
+			<td><b>No.&nbsp&nbsp</b></td>
+				<td><b>Nazwisko&nbsp&nbsp</b></td>
+				<td><b>Imie</b></td>
+
+		</tr>
 	{% for item in movies %}
-		<li> {{ item.lastName }}  {{ item.firstName }}
-
-		</li>
-
+		<tr>
+			<td>{{ loop.index }}&nbsp&nbsp</td>
+			<td>{{ item.lastName }}&nbsp&nbsp</td>
+			<td>{{ item.firstName }}</td>
+		</tr>
 	{% endfor %}
+	</table>
 {% endblock %}
