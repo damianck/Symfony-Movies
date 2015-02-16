@@ -1,18 +1,44 @@
 {% extends 'ShopMainBundle::layout.html.twig' %}
 
 {% block content %}
-	<h1 class="col-md-offset-4 col-centered">Dodaj film</h1>
-		{{ form_row(form) }}
-		<button class="col-md-offset-6 col-centered" type="submit">Dodaj Wpis</button>
+	<h1 class="col-md-offset-5 col-centered">Dodaj film</h1><br/>
+	<form method="POST"  class="col-md-offset-5 col-centered">
+
+		<table border="0" >
+			<tr>
+				<td>{{ form_label(form.title) }}&nbsp&nbsp</td>
+				<td>{{ form_widget(form.title) }}</td>
+			</tr><tr><td>&nbsp</td></tr>
+			<tr>
+				<td>{{ form_label(form.description) }}&nbsp&nbsp</td>
+				<td>{{ form_widget(form.description) }}</td>
+
+			</tr>
+			<tr>
+				<td>{{ form_label(form.price) }}&nbsp&nbsp</td>
+				<td>{{ form_widget(form.price) }}</td>
+			</tr>
+			<tr>
+				<td>{{ form_label(form.cover) }}&nbsp&nbsp</td>
+				<td>{{ form_widget(form.cover) }}</td>
+			</tr>
+			<tr>
+				<td>{{ form_label(form.stream) }}&nbsp&nbsp</td>
+				<td>{{ form_widget(form.stream) }}</td>
+			</tr>
+			<tr>
+				<td>{{ form_label(form.actors) }}&nbsp&nbsp</td>
+				<td>{{  form_widget(form.actors) }}</td>
+			</tr>
+			<tr>
+				<td>{{ form_label(form.categories) }}&nbsp&nbsp</td>
+				<td>{{  form_widget(form.categories) }}</td>
+			</tr>
 
 
 
-
-
-
-
-
-
-
+		</table><br/>
+		<button class="col-md-offset-2 col-centered" type="submit">Dodaj film</button>
 	</form>
+	<br />
 {% endblock %}
