@@ -2,17 +2,7 @@
 
 {% block content %}
 	<h1 class="col-md-offset-4 col-centered">Dodaj film</h1>
-	<form method="POST" class="col-md-offset-4 col-centered" {{ form_enctype(form) }}>
-
-		<ul id="email-fields-list" data-prototype="{{ form_widget(form.actors.vars.prototype) | e }}">
-			{% for actorField in form.actors %}
-				<li>
-					{{ form_errors(actorField) }}
-					{{ form_widget(actorField) }}
-				</li>
-			{% endfor %}
-		</ul>
-</form>
+	
 		<button class="col-md-offset-6 col-centered" type="submit">Dodaj Wpis</button>
 
 
