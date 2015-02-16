@@ -2,6 +2,7 @@
 
 {% block content %}
 	<h1 class="col-md-offset-5 col-centered">Dodaj film</h1><br/>
+{% form_theme form 'bootstrap_3_layout.html.twig' %}
 	<form method="POST"  class="col-md-offset-5 col-centered">
 
 		<table border="0" >
@@ -40,6 +41,7 @@
 		</table><br/>
 		<button class="col-md-offset-2 col-centered" type="submit">Dodaj film</button>
 	</form>
+
 	<br />
 
 {#<div class="container">#}
@@ -74,7 +76,7 @@
 									{#<label class="control-label col-sm-2" for="shop_mainbundle_movie_description">Opis:</label>#}
 									{#<div class="col-sm-10"  >#}
 										{#&#123;&#35;<input class=" form-control"   type="text" id="shop_mainbundle_movie_title" name="shop_mainbundle_description[description]" required="required"  placeholder="Opis">&#35;&#125;#}
-										{#<textarea class="form-control" rows="4" id="shop_mainbundle_movie_description" name="shop_mainbundle_description[description]"  placeholder="Krótki opis filmu"></textarea>#}
+										{#<textarea class="form-control" rows="4" id="shop_mainbundle_movie_description" name="shop_mainbundle_movie[description]"  placeholder="Krótki opis filmu"></textarea>#}
 									{#</div>#}
 								{#</div>#}
 
@@ -84,12 +86,12 @@
 									{#<div class="col-sm-10"  >#}
 										{#<div class="btn-group" data-toggle="buttons">#}
 											{#<ul>#}
-												{#{% for cat in form.children.categories %} }}#}
-													{#<li><input type="number" id="form_age" name="form[age]" required="required" value="33" /></li>#}
+												{#{% for cat in form.categories %} }}#}
+													{#<li><input type="number" id="form_age" name="form[age]" required="required" value="33" />{{ form_label(cat) }}</li>#}
 												{#{% endfor %}#}
 											{#</ul>#}
 											{#<label class="btn btn-primary">#}
-												{#<input type="checkbox" autocomplete="off"> Checkbox 2#}
+												{#<input type="checkbox" autocomplete="off">sss#}
 											{#</label>#}
 											{#<label class="btn btn-primary">#}
 												{#<input type="checkbox" autocomplete="off"> Checkbox 3#}
@@ -99,7 +101,7 @@
 								{#</div>#}
 
 
-
+								{#{{ form_label(form.categories) }}#}
 
 
 								{#<div class="form-group">#}
