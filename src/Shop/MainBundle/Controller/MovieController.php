@@ -53,12 +53,12 @@ class MovieController extends Controller
 		);
 	}
 
-	public function detailsAction(Request $request)
+	public function detailsAction(Request $request,$id)
 	{
 		$em = $this->getDoctrine()->getManager();
 		$repository = $em->getRepository("ShopMainBundle:Movie");
 
-		$movies = $repository->find('id');
+		$movies = $repository->find($id);
 		
 		if (!$movies) {
 			throw $this->createNotFoundException('Unable to find movie entity.');
