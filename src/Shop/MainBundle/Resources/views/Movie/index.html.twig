@@ -19,6 +19,7 @@
 				<td><b>Cena</b></td>
 				<td><b>Kategoria</b></td>
 				<td><b>Edycja</b></td>
+				<td><b>Szczegóły</b></td>
 			</tr>
 			{% for item in movies %}
 				<tr>
@@ -35,6 +36,9 @@
 					</td>
 					<td style="width: 80px">
 						<a href="{{ path('shop_main_movies_edit', {'id': item.id }) }}" class="btn btn-primary btn-sm" role="button">Edytuj</a>
+					</td>
+					<td style="width: 80px">
+						<a href="{{ path('shop_main_movies_details', {'id': item.id}) }}" class="btn btn-primary btn-sm" role="button">Wiecej</a>
 					</td>
 				</tr>
 			{% endfor %}
