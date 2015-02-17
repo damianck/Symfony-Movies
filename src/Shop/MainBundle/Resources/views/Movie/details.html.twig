@@ -20,50 +20,24 @@
                 <td><b>Kategoria</b></td>
                 <td><b>Aktor</b></td>
             </tr>
-            {#<!-- wyswietlanie po id ?? -->#}
-<<<<<<< HEAD
-
-                <tr>
-                    {#<td style="width: 70px">{{ loop.index }}</td>#}
-                    {#<!-- Tablica movie -->#}
-                    <td>{{ movies.title }}</td>
-                    <td>{{ movies.numberOfSales }}</td>
-                    {#<td>{{ movies.numberOfReviews }}</td>#}
-=======
-            {# {% for item in movies %}#}
-                 <tr>
-                     {#<td style="width: 70px">{{ loop.index }}</td>#}
-                    {#<!-- Tablica movie -->#}
-                    <td>{{ movies.title }}</td>
-                    <td>{{ movies.numberOfSales }}</td>
-                    {# sypie oto blad <td>{{ item.numberOfReviews }}</td>#}
->>>>>>> master
-                    <td>{{ movies.description }}</td>
-                    <td>{{ movies.price }}</td>
-                    <td>{{ movies.cover }}</td>
-                    <td>{{ movies.stream }}</td>
-                    {#<!-- category movie -->#}
-                    <td>
-<<<<<<< HEAD
-                        {{ category }}
-                    </td>
-                    {#<!-- actors -->#}
-                    <td>
-                        {{ actors }}
-                    </td>
-                </tr>
-
-=======
-
-                    </td>
-                    {#<!-- actors -->#}
-                    <td>
-
-                    </td>
-                </tr>
-            {# {% endfor %}#}
->>>>>>> master
+            <tr>
+            {#<!-- Tablica movie -->#}
+                <td>{{ movies.title }}</td>
+                <td>{{ movies.numberOfSales }}</td>
+                {#<td>{{ movies.numberOfReviews }}</td>#}
+                <td>{{ movies.description }}</td>
+                <td>{{ movies.price }}</td>
+                <td>{{ movies.cover }}</td>
+                <td>{{ movies.stream }}</td>
+                {#<!-- category movie -->#}
+                <td>
+                    {{ category }}
+                </td>
+                {#<!-- actors -->#}
+                <td>
+                    {{ actors }}
+                </td>
+            </tr>
         </table>
-
     </div>
 {% endblock %}
