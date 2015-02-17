@@ -53,12 +53,12 @@ class MovieController extends Controller
 		);
 	}
 
-	public function detailsAction(Request $request)
+	public function detailsAction(Request $request,$id)
 	{
 		$em = $this->getDoctrine()->getManager();
 		$repository = $em->getRepository("ShopMainBundle:Movie");
 
-		$movie = $repository->find('id');
+		$movie = $repository->find($id);
 
 		return $this->render(
 			'ShopMainBundle:Movie:details.html.twig',
