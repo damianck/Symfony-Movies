@@ -59,7 +59,7 @@ class MovieController extends Controller
 		$repository = $em->getRepository("ShopMainBundle:Movie");
 
 		$movies = $repository->find($id);
-		
+
 		if (!$movies) {
 			throw $this->createNotFoundException('Unable to find movie entity.');
 		}
