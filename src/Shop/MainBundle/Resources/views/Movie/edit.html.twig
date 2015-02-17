@@ -1,0 +1,28 @@
+{% extends 'ShopMainBundle::layout.html.twig' %}
+
+{% block content %}
+<div class="panel panel-default">
+
+    <div class="panel-heading"><h4>Edycja filmu: <b></b></h4></div>
+    <div class="panel-body">
+        <a href="{{ path('shop_main_movies') }}" class="btn btn-primary" role="button">Porzuć zmiany i wróć</a>
+    </div>
+
+    <form method="POST"  class="col-md-offset-5 col-centered">
+
+
+
+
+
+        <button class="col-md-offset-2 col-centered" type="submit">Zapisz zmiany</button>
+    </form>
+
+
+
+
+</div>
+{% endblock %}
+
+
+
+
