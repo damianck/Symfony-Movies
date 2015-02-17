@@ -2,7 +2,7 @@
 
 {% block content %}
     <div class="panel panel-default">
-        <div class="panel-heading"><h4>Szczegóły filmu </h4></div>
+        <div class="panel-heading"><h4>Szczegóły filmu: <b>{{ movies.title }}</b> </h4></div>
         <div class="panel-body">
             <a href="{{ path('shop_main_movies') }}" class="btn btn-primary" role="button">Powrót</a>
         </div>
@@ -12,7 +12,7 @@
                 {#<td><b>No.</b></td>#}
                 <td><b>Tytuł</b></td>
                 <td><b>Liczba sprzedaży</b></td>
-                {# sypie oto blad <td><b>Liczba recenzji</b></td>#}
+                {#<td><b>Liczba recenzji</b></td>#}
                 <td><b>Opis</b></td>
                 <td><b>Cena</b></td>
                 <td><b>Cover</b></td>
@@ -21,6 +21,15 @@
                 <td><b>Aktor</b></td>
             </tr>
             {#<!-- wyswietlanie po id ?? -->#}
+<<<<<<< HEAD
+
+                <tr>
+                    {#<td style="width: 70px">{{ loop.index }}</td>#}
+                    {#<!-- Tablica movie -->#}
+                    <td>{{ movies.title }}</td>
+                    <td>{{ movies.numberOfSales }}</td>
+                    {#<td>{{ movies.numberOfReviews }}</td>#}
+=======
             {# {% for item in movies %}#}
                  <tr>
                      {#<td style="width: 70px">{{ loop.index }}</td>#}
@@ -28,12 +37,23 @@
                     <td>{{ movies.title }}</td>
                     <td>{{ movies.numberOfSales }}</td>
                     {# sypie oto blad <td>{{ item.numberOfReviews }}</td>#}
+>>>>>>> master
                     <td>{{ movies.description }}</td>
                     <td>{{ movies.price }}</td>
                     <td>{{ movies.cover }}</td>
                     <td>{{ movies.stream }}</td>
                     {#<!-- category movie -->#}
                     <td>
+<<<<<<< HEAD
+                        {{ category }}
+                    </td>
+                    {#<!-- actors -->#}
+                    <td>
+                        {{ actors }}
+                    </td>
+                </tr>
+
+=======
 
                     </td>
                     {#<!-- actors -->#}
@@ -42,6 +62,7 @@
                     </td>
                 </tr>
             {# {% endfor %}#}
+>>>>>>> master
         </table>
 
     </div>
