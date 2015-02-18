@@ -23,6 +23,11 @@ class Review {
     protected $content;
 
     /**
+     * @ORM\Column(type="string", length=255)
+     */
+    protected $author;
+
+    /**
      * @ORM\ManyToOne(targetEntity="Movie", inversedBy="reviews")
      */
     protected $movie;
@@ -44,6 +49,17 @@ class Review {
     public function getContent()
     {
         return $this->content;
+    }
+
+    public function setAuthor($author)
+    {
+        $this->author = $author;
+        return $this;
+    }
+
+    public function getAuthor()
+    {
+        return $this->author;
     }
 
     public function getMovie()

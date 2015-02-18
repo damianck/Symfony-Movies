@@ -60,13 +60,16 @@ class MovieController extends Controller
 
 
 		$movie = $repository->find($id);
-		$category = $em->getRepository("ShopMainBundle:Category")->find($id);
+		//$category = $em->getRepository("ShopMainBundle:Category")->findAll($id);
 		$actors = $em->getRepository("ShopMainBundle:Actor")->find($id);
 
 		if (!$movie) {
 			throw $this->createNotFoundException('Unable to find movie entity.');
 		}
-		
+
+		$category = $movie->getCategories();
+		$actors = $movie->getActors();
+
 		return $this->render(
 			'ShopMainBundle:Movie:details.html.twig',
 			array(
