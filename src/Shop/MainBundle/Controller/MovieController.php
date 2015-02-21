@@ -112,10 +112,12 @@ class MovieController extends Controller
 		$em->flush();
 		//return $this->redirect($this->generateUrl('ShopMainBundle:Movie:index.html.twig',array('movies' => $movie,)));
 
+		$movies = $repository->findAll();
+
 		return $this->render(
 			'ShopMainBundle:Movie:index.html.twig',
 			array(
-				'movies' => $movie,
+				'movies' => $movies,
 			)
 		);
 
