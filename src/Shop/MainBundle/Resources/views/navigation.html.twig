@@ -31,7 +31,7 @@
             <ul class="nav nav-pills  navbar-right" role="tablist">
                 <li role="presentation"><a href="#">Koszyk <span class="badge">0</span></a></li>
                 {% if app.user is not empty %}
-                    <li role="presentation"><a href="">{{ app.user }}</a></li>
+                    <li role="presentation"><a href="{{ path('shop_main_current_user') }}">{{ app.user }}</a></li>
                 {% endif %}
 
                 {% if app.user is not empty %}

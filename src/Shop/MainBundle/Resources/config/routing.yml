@@ -3,6 +3,9 @@ shop_main_homepage:
     defaults: { _controller: ShopMainBundle:Default:index }
 
 
+shop_main_current_user:
+    path:     /current_user
+    defaults: { _controller: ShopMainBundle:User:index }
 
 
 shop_main_movies:
@@ -85,3 +88,12 @@ shop_main_reviews_create:
 
 
 
+shop_main_orders:
+      path: /orders
+      defaults:
+          _controller: ShopMainBundle:Order:index
+
+shop_main_orders_create:
+      path: /orders/create
+      defaults:
+          _controller: ShopMainBundle:Order:create

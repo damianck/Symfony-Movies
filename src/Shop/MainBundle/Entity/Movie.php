@@ -15,6 +15,7 @@ class Movie
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
+
     protected $id;
 	/**
      * @ORM\Column(type="string", length=255)
@@ -52,6 +53,7 @@ class Movie
      * @ORM\OneToMany(targetEntity="Shop\MainBundle\Entity\Review", mappedBy="movie")
      */
     protected $reviews;
+
 
 
 

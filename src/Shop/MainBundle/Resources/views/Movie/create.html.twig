@@ -4,7 +4,7 @@
 	<h1 class="col-md-offset-5 col-centered">Dodaj film</h1><br/>
 {% form_theme form 'bootstrap_3_layout.html.twig' %}
 	<form method="POST"  class="col-md-offset-5 col-centered">
-
+		{{ form_row(form._token) }}
 		<table border="0" >
 			<tr>
 				<td>{{ form_label(form.title) }}&nbsp&nbsp</td>
