@@ -52,15 +52,14 @@ class MovieController extends Controller
 		);
 	}
 
-	public function detailsAction(Request $request,$id)
+	public function detailsAction($id)
 	{
 		$em = $this->getDoctrine()->getManager();
 		$repository = $em->getRepository("ShopMainBundle:Movie");
 
 
 		$movie = $repository->find($id);
-		//$category = $em->getRepository("ShopMainBundle:Category")->findAll($id);
-		$actors = $em->getRepository("ShopMainBundle:Actor")->find($id);
+
 
 		if (!$movie) {
 			throw $this->createNotFoundException('Unable to find movie entity.');
@@ -72,7 +71,7 @@ class MovieController extends Controller
 		return $this->render(
 			'ShopMainBundle:Movie:details.html.twig',
 			array(
-				'movies' => $movie,
+				'movie' => $movie,
 				'category' => $category,
 				'actors' => $actors,
 			)
@@ -109,7 +108,7 @@ class MovieController extends Controller
 		//$em->remove($id);
 		$em->remove($movie);
 		$em->flush();
-		//return $this->redirect($this->generateUrl('ShopMainBundle:Movie:index.html.twig',array('movies' => $movie,)));
+		//return $this->redirect($this->generateUrl('ShopMainBundle:Movie:cart.html.twig',array('movies' => $movie,)));
 
 		$movies = $repository->findAll();
 

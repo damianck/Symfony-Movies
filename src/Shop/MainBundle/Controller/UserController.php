@@ -8,8 +8,8 @@
 
 namespace Shop\MainBundle\Controller;
 
-use Doctrine\Common\Collections\Criteria;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Shop\MainBundle\Controller\MovieController;
 
 class UserController extends Controller
 {
@@ -32,4 +32,50 @@ class UserController extends Controller
             )
         );
     }
+
+    public function cartAction()
+    {
+        $tmp = $this->getUser();
+        $cart = $tmp->getCart();
+
+        $totalCost = 0;
+
+        foreach( $cart as &$movie)
+        {
+            $totalCost += $movie->getPrice();
+        }
+
+
+
+        return $this->render(
+            'ShopMainBundle:User:cart.html.twig',
+            array(
+                'totalCost' => $totalCost,
+
+            )
+        );
+    }
+
+    public function addToCartAction( $id)
+    {
+
+        
+        $em = $this->getDoctrine()->getManager();
+        $repository = $em->getRepository("ShopMainBundle:Movie");
+        $movie = $repository-> find($id);
+
+        $this->getUser()->addToCart($movie);
+
+        return $this->render(
+            'ShopMainBundle:User:addToCart.html.twig',
+            array(
+                'id' => $id,
+
+            )
+        );
+
+
+    }
+
+
 }

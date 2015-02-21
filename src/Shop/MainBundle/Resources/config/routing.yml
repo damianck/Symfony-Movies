@@ -7,6 +7,17 @@ shop_main_current_user:
     path:     /current_user
     defaults: { _controller: ShopMainBundle:User:index }
 
+shop_main_current_user_cart:
+    path:     /current_user/cart
+    defaults: { _controller: ShopMainBundle:User:cart }
+
+shop_main_current_user_addToCart:
+    path:     /current_user/add_to_cart/{id}
+    defaults: { _controller: ShopMainBundle:User:addToCart }
+
+
+
+
 
 shop_main_movies:
     path: /movies

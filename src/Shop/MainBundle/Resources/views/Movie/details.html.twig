@@ -7,7 +7,7 @@
          <div class="col-sm-4">
               <div class="panel panel-default">
                     <div class="panel-body">
-                        <img src='{{ movies.cover }}' width="340" height="460" >
+                        <img src='{{ movie.cover }}' width="340" height="460" >
                     </div>
               </div>
          </div>
@@ -15,7 +15,7 @@
 
        <div class="col-sm-8">
            <div class="panel panel-default">
-             <div class="panel-heading"> <h3>{{ movies.title }}</h3></div>
+             <div class="panel-heading"> <h3>{{ movie.title }}</h3></div>
               <div class="panel-body">
 
                   <p class="pull-right">
@@ -27,14 +27,26 @@
                   </p>
                 <div class="clearfix"></div>
                 <hr>
-                <p><h3 class="pull-right"><small>Cena</small> {{ movies.price }}</h3></p>
+                <p><h3 class="pull-right"><small>Cena</small> {{ movie.price }}</h3></p>
               </div>
            </div>
 
             <div class="col-sm-8">
-                <button class="btn btn-danger btn-lg pull-right" type="button" style="paddingt: 20px; margin: 10px">Wypożycz</button>
 
-                <button class="btn btn-success btn-lg pull-right" type="button" style="paddingt: 20px; margin: 10px">Oglądaj</button>
+                {% set watch = 'false' %}
+                {% for order in  app.user.orders %}
+                    {% if order.status.id == 3 %}
+                        {% for item in order.movies %}
+                            {% if item.id == movie.id %}
+                                <a class="btn btn-success btn-lg pull-right" type="button" role="button" style="paddingt: 20px; margin: 10px" >Oglądaj</a>
+                                {% set watch = 'true' %}
+                            {% endif %}
+                        {% endfor %}
+                    {% endif %}
+                {% endfor %}
+                {% if watch == 'false' %}
+                    <a href="{{ path('shop_main_current_user_addToCart', {'id': movie.id }) }}" class="btn btn-danger btn-lg pull-right" type="button" role="button" style="paddingt: 20px; margin: 10px"  >Dodaj do koszyka</a>
+                {% endif %}
             </div>
 
        </div>
@@ -50,7 +62,7 @@
                 <div class="panel-heading"><h4>Recenzja</h4></div>
                 <div class="panel-body">
                     <div class="list-group">
-                        {{ movies.description }}
+                        {{ movie.description }}
                     </div>
                     </div>
             </div>
@@ -79,7 +91,7 @@
         <div class="panel panel-default">
             <div class="panel-heading"> <h4>Opinie</h4></div>
                 <div class="panel-body">
-                    {% for item in movies.getReviews() %}
+                    {% for item in movie.getReviews() %}
                         <p>  {{ item.content }} <small class="pull-right">{{ item.author }}</small> </p>
                         <hr>
                     {% endfor %}
