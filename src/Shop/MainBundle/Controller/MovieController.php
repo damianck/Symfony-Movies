@@ -102,15 +102,23 @@ class MovieController extends Controller
 		$em = $this->getDoctrine()->getManager();
 		$repository = $em->getRepository("ShopMainBundle:Movie");
 
-		$collectionMovies = $repository->find($id);
-		// ???
+		$movie = $repository->find($id);
 
+		if (!$movie) {
+			throw $this->createNotFoundException('No movie found for id '.$id);
+		}
+		//$em->remove($id);
+		$em->remove($movie);
+		$em->flush();
+		return $this->redirect($this->generateUrl('ShopMainBundle:Movie:index.html.twig'));
+/*
 		return $this->render(
 			'ShopMainBundle:Movie:index.html.twig',
 			array(
-				'movies' => $collectionMovies,
+				'movies' => $movie,
 			)
 		);
+*/
 	}
 
 }
