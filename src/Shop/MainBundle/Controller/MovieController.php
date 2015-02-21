@@ -13,16 +13,15 @@ class MovieController extends Controller
 	{
 		$movie = new Movie();
 		$movie->setNumberOfSales(0);
-
-
+		
 		$form = $this->createForm(
 			new MovieType(),
 			$movie
 		);
 
 		if ($request->isMethod('POST')
-		&& $form->handleRequest($request)
-		&& $form->isValid()
+			&& $form->handleRequest($request)
+			&& $form->isValid()
 		) {
 			$em = $this->getDoctrine()->getManager();
 			$em->persist($movie);
