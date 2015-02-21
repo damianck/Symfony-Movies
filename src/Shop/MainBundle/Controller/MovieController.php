@@ -110,15 +110,15 @@ class MovieController extends Controller
 		//$em->remove($id);
 		$em->remove($movie);
 		$em->flush();
-		return $this->redirect($this->generateUrl('ShopMainBundle:Movie:index.html.twig'));
-/*
+		//return $this->redirect($this->generateUrl('ShopMainBundle:Movie:index.html.twig',array('movies' => $movie,)));
+
 		return $this->render(
 			'ShopMainBundle:Movie:index.html.twig',
 			array(
 				'movies' => $movie,
 			)
 		);
-*/
+
 	}
 
 }
