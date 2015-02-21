@@ -49,7 +49,10 @@ shop_main_categories_edit:
         defaults:
             _controller: ShopMainBundle:Category:edit
 
-
+shop_main_categories_delete:
+    path: /categories/{id}/delete
+    defaults:
+        _controller: ShopMainBundle:Category:delete
 
 
 
@@ -68,6 +71,11 @@ shop_main_actors_edit:
        path: /actors/{id}/edit
        defaults:
            _controller: ShopMainBundle:Actor:edit
+
+shop_main_actors_delete:
+    path: /actors/{id}/delete
+    defaults:
+        _controller: ShopMainBundle:Actor:delete
 
 
 

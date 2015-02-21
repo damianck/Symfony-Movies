@@ -17,6 +17,7 @@
 				<td><b>No.</b></td>
 				<td><b>Kategoria</b></td>
 				<td><b>Edycja</b></td>
+				<td><b>Kasowanie</b></td>
 
 			</tr>
 			{% for item in movies %}
@@ -25,6 +26,9 @@
 					<td>{{ item.name }}</td>
 					<td style="width: 80px">
 						<a href="{{ path('shop_main_categories_edit', {'id': item.id }) }}" class="btn btn-primary btn-sm" role="button">Edytuj</a>
+					</td>
+					<td style="width: 80px">
+						<a href="{{ path('shop_main_categories_delete', {'id': item.id}) }}" onClick="return confirm('Napewno chcesz usunać?')" class="btn btn-primary btn-sm" role="button">Skasuj</a>
 					</td>
 				</tr>
 			{% endfor %}

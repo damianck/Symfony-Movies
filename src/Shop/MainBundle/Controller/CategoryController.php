@@ -50,4 +50,30 @@ class CategoryController extends Controller
 			)
 		);
 	}
+	public function deleteAction(Request $request,$id)
+	{
+		$em = $this->getDoctrine()->getManager();
+		$repository = $em->getRepository("ShopMainBundle:Category");
+
+		$cat = $repository->find($id);
+
+		if (!$cat) {
+			throw $this->createNotFoundException('No category found for id '.$id);
+		}
+		//$em->remove($id);
+		$em->remove($cat);
+		$em->flush();
+
+		//	return $this->redirect($this->generateUrl('ShopMainBundle:Movie:index.html.twig'));
+
+		$categories = $repository->findAll();
+
+		return $this->render(
+			'ShopMainBundle:Category:index.html.twig',
+			array(
+				'movies' => $categories,
+			)
+		);
+
+	}
 }
