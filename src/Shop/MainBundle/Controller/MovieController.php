@@ -13,16 +13,15 @@ class MovieController extends Controller
 	{
 		$movie = new Movie();
 		$movie->setNumberOfSales(0);
-
-
+		
 		$form = $this->createForm(
 			new MovieType(),
 			$movie
 		);
 
 		if ($request->isMethod('POST')
-		&& $form->handleRequest($request)
-		&& $form->isValid()
+			&& $form->handleRequest($request)
+			&& $form->isValid()
 		) {
 			$em = $this->getDoctrine()->getManager();
 			$em->persist($movie);
@@ -102,15 +101,25 @@ class MovieController extends Controller
 		$em = $this->getDoctrine()->getManager();
 		$repository = $em->getRepository("ShopMainBundle:Movie");
 
-		$collectionMovies = $repository->find($id);
-		// ???
+		$movie = $repository->find($id);
+
+		if (!$movie) {
+			throw $this->createNotFoundException('No movie found for id '.$id);
+		}
+		//$em->remove($id);
+		$em->remove($movie);
+		$em->flush();
+		//return $this->redirect($this->generateUrl('ShopMainBundle:Movie:index.html.twig',array('movies' => $movie,)));
+
+		$movies = $repository->findAll();
 
 		return $this->render(
 			'ShopMainBundle:Movie:index.html.twig',
 			array(
-				'movies' => $collectionMovies,
+				'movies' => $movies,
 			)
 		);
+
 	}
 
 }
