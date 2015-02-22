@@ -6,6 +6,7 @@ namespace Shop\MainBundle\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
+use Shop\MainBundle\Controller\UserController;
 
 /**
  * @ORM\Entity
@@ -22,6 +23,8 @@ class User extends BaseUser
     protected $id;
 
     /**
+     *  @var array
+     * @ORM\Column(type="array")
      * @ORM\OneToMany(targetEntity="Shop\MainBundle\Entity\Order", mappedBy="userId")
      */
     protected $orders;
@@ -31,17 +34,13 @@ class User extends BaseUser
      */
     protected $avatar;
 
-    /**
-     *
-     * @var movie
-     */
-    public $cart;
+
 
 
     public function __construct()
     {
-        $this->orders = new ArrayCollection();
-        $this->cart = new ArrayCollection();
+        $this->orders = [];
+        $this->avatar = "http://i.imgur.com/A7Dy18f.png";
         parent::__construct();
         // your own logic
     }
@@ -81,7 +80,7 @@ class User extends BaseUser
     {
         if( is_null($this->orders))
         {
-            $this->orders = new ArrayCollection();
+            $this->orders = [];
         }
         return $this->orders;
     }
@@ -94,9 +93,9 @@ class User extends BaseUser
      */
     public function addOrder($order)
     {
-        if( is_null($this->orders))
+        if( is_null($this->orders) ||$this->orders != [])
         {
-            $this->orders = new ArrayCollection();
+            $this->orders = [];
         }
         array_push($this->orders, $order);
 
@@ -128,61 +127,6 @@ class User extends BaseUser
         return $this->avatar;
     }
 
-    //---------------------------------------------------- Cart
 
-    /**
-     * Set cart
-     *
-     * @param ArrayCollection $cart
-     * @return User
-     */
-    public function setCart($cart)
-    {
-        $this->cart = $cart;
-
-        return $this;
-    }
-    /**
-     * Add to cart
-     *
-     * @param movie $movie
-     * @return User
-     */
-    public function addToCart($movie)
-    {
-        if( is_null($this->cart))
-        {
-            $this->cart = new ArrayCollection();
-        }
-        $this->cart->add($movie);
-
-        return $this;
-    }
-    /**
-     * Get cart
-     *
-     * @return ArrayCollection
-     */
-    public function getCart()
-    {
-        if( is_null($this->cart))
-        {
-            $this->cart = new ArrayCollection();
-        }
-        return $this->cart;
-    }
-    /**
-     * Get cartCount
-     *
-     * @return integer
-     */
-    public function getCartCount()
-    {
-        if( is_null($this->cart))
-        {
-            $this->cart = new ArrayCollection();
-        }
-        return $this->cart->count();
-    }
 
 }

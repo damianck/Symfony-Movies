@@ -1,0 +1,37 @@
+{% extends 'ShopMainBundle::layout.html.twig' %}
+
+{% block content %}
+
+    {% if status == 'added'  %}
+        <p>
+            <h3>Pomyślnie dodano produkt do koszyka</h3>
+            <br>
+        </p>
+        <br>
+
+        <a class="btn btn-success btn-lg pull-right" type="button" role="button" style="paddingt: 20px; margin: 10px" href="{{ path('shop_main_cart') }}" >Przejdź do koszyka</a>
+        <a class="btn btn-success btn-lg pull-right" type="button" role="button" style="paddingt: 20px; margin: 10px" href="{{ path('shop_main_movies_details', {'id': id}) }}" >Powrót</a>
+    {% endif %}
+
+    {% if status == 'existInCart' %}
+            <p>
+                <h3>Film znajduje się już w koszyku</h3>
+                <br>
+            </p>
+            <br>
+
+            <a class="btn btn-warning btn-lg pull-right" type="button" role="button" style="paddingt: 20px; margin: 10px" href="{{ path('shop_main_cart') }}" >Przejdź do koszyka</a>
+            <a class="btn btn-warning btn-lg pull-right" type="button" role="button" style="paddingt: 20px; margin: 10px" href="{{ path('shop_main_movies_details', {'id': id}) }}" >Powrót</a>
+    {% endif %}
+    {% if status == 'bought' %}
+            <p>
+                <h3>Film znajduje się już w zamówieniach</h3>
+                <br>
+            </p>
+            <br>
+
+            <a class="btn btn-default btn-lg pull-right" type="button" role="button" style="paddingt: 20px; margin: 10px" href="{{ path('shop_main_current_user') }}" >Przejdź do profilu</a>
+            <a class="btn btn-default btn-lg pull-right" type="button" role="button" style="paddingt: 20px; margin: 10px" href="{{ path('shop_main_movies_details', {'id': id}) }}" >Powrót</a>
+    {% endif %}
+
+{% endblock %}

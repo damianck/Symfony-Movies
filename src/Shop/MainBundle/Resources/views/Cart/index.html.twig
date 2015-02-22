@@ -1,16 +1,8 @@
 {% extends 'ShopMainBundle::layout.html.twig' %}
 
 {% block content %}
-
-
-
-
-
     <div class="panel panel-default">
-
         <div class="panel-heading"><h4>Koszyk</h4></div>
-
-
 
         {#<!-- Table -->#}
         <table   class="table table-striped table-bordered"   >
@@ -22,7 +14,7 @@
                 <td><b>Szczegóły</b></td>
                 <td><b></b></td>
             </tr>
-            {% for item in app.user.cart %}
+            {% for item in cart %}
                 <tr>
                     <td style="width: 70px">{{ loop.index }}</td>
                     <td>{{ item.title }}</td>
@@ -35,12 +27,11 @@
                             {% endfor %}
                         </lu>
                     </td>
-
                     <td style="width: 80px">
                         <a href="{{ path('shop_main_movies_details', {'id': item.id}) }}" class="btn btn-primary btn-sm" role="button">Szczegóły</a>
                     </td>
                     <td style="width: 80px">
-                        <a href="" class="btn btn-primary btn-sm" role="button">Usuń z listy</a>
+                        <a href="{{ path('shop_main_cart_remove', {'id': item.id}) }}" class="btn btn-primary btn-sm" role="button">Usuń z listy</a>
                     </td>
                 </tr>
             {% endfor %}
@@ -49,9 +40,9 @@
         <div class="panel-footer">
 
             <span ><h3><b><small>Łączna kwota zamówienia: </small><big>{{ totalCost }}</big></b></h3></span><br>
-            <a href="" class="btn btn-primary" role="button">Zrealizuj zamówienie</a>
+            {% if cart != NULL %}
+                <a href="{{ path('shop_main_orders_create') }}" class="btn btn-primary" role="button">Zrealizuj zamówienie</a>
+                {% endif %}
         </div>
-
     </div>
-
 {% endblock %}

@@ -1,0 +1,12 @@
+{% extends 'ShopMainBundle::layout.html.twig' %}
+
+{% block content %}
+    <p>
+        <h3>Film został usunięty z koszyka</h3>
+        <br>
+    </p>
+    <br>
+
+    <a class="btn btn-warning btn-lg pull-right" type="button" role="button" style="paddingt: 20px; margin: 10px" href="{{ path('shop_main_cart') }}" >Wróć do koszyka</a>
+    <a class="btn btn-warning btn-lg pull-right" type="button" role="button" style="paddingt: 20px; margin: 10px" href="{{ path('shop_main_homepage')}}" >Strona głowna</a>
+{% endblock %}
