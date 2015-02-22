@@ -82,7 +82,7 @@ class CategoryController extends Controller
         $em = $this->getDoctrine()->getManager();
         $repository = $em->getRepository("ShopMainBundle:Category");
 
-        $actor = $repository->find($id);
+        $categories = $repository->find($id);
         $category = $em->getRepository("ShopMainBundle:Category")->find($id);
         $actors = $em->getRepository("ShopMainBundle:Actor")->find($id);
 
