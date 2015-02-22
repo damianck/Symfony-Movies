@@ -120,8 +120,3 @@ shop_main_orders_create:
       path: /orders/create
       defaults:
           _controller: ShopMainBundle:Order:create
-
-shop_main_orders_payment:
-      path: /orders/payment
-      defaults:
-          _controller: ShopMainBundle:Order:payment
