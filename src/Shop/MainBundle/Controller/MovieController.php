@@ -1,5 +1,5 @@
 <?php
- 
+  
 namespace Shop\MainBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -84,13 +84,34 @@ class MovieController extends Controller
 		$repository = $em->getRepository("ShopMainBundle:Movie");
 
 		$movie = $repository->find($id);
-		$category = $em->getRepository("ShopMainBundle:Category")->find($id);
-		$actors = $em->getRepository("ShopMainBundle:Actor")->find($id);
+		$category = $em->getRepository("ShopMainBundle:Category")->findAll();
+		$actors = $em->getRepository("ShopMainBundle:Actor")->findAll();
+
+		$moviex = new Movie();
+		$moviex->setNumberOfSales(0);
+
+		$form = $this->createForm(
+			new MovieType(),
+			$moviex
+		);
+
+		if ($request->isMethod('POST')
+			&& $form->handleRequest($request)
+			&& $form->isValid()
+		) {
+			$em = $this->getDoctrine()->getManager();
+			$em->persist($moviex);
+			$em->flush();
+		}
+
 
 		return $this->render(
 			'ShopMainBundle:Movie:edit.html.twig',
 			array(
 				'movies' => $movie,
+				'category' => $category,
+				'actors' => $actors,
+				'form' => $form->createView(),
 			)
 		);
 	}

@@ -7,20 +7,88 @@
     <div class="panel-body">
         <a href="{{ path('shop_main_movies') }}" class="btn btn-primary" role="button">Porzuć zmiany i cofnij</a>
     </div>
+    </div>
+    <div class="panel panel-default">
 
-    <form method="POST"  class="col-md-offset-5 col-centered">
+        <div class="panel-heading"><h4>Bieżace dane:</h4></div>
 
+    <table   class="table table-striped table-bordered"   >
+        <tr>
+            <td><b>Cover</b></td>
+            <td><b>Tytuł</b></td>
+            <td><b>Liczba sprzedaży</b></td>
+            <td><b>Cena</b></td>
+            <td><b>Kategoria</b></td>
+            <td><b>Aktorzy</b></td>
+            <td><b>Stream</b></td>
+            <td><b>Opis</b></td>
 
-
-
-
-        <button class="col-md-offset-2 col-centered" type="submit">Zapisz zmiany</button>
-    </form>
-
-
-
-
+        </tr>
+        <tr>
+            <td style="width: 120px"><img src='{{ movies.cover }}' width="120" height="120" ></td>
+            <td>{{ movies.title }}</td>
+            <td>{{ movies.numberOfSales }}</td>
+            <td>{{ movies.price }}</td>
+            <td>
+            {% for item in category %}
+                {{ item }} <br />
+            {% endfor %}
+            </td>
+            <td>
+            {% for item in actors %}
+                {{ item }} <br/>
+            {% endfor %}
+            </td>
+            <td>{{ movies.stream }}</td>
+            <td>{{ movies.description }}</td>
+        </tr>
+    </table>
 </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading"><h4>Wprowadz nowe dane:</h4></div>
+        <h1 class="col-md-offset-5 col-centered">Edytuj film</h1><br/>
+        {% form_theme form 'bootstrap_3_layout.html.twig' %}
+        <form method="POST"  class="col-md-offset-5 col-centered">
+            {{ form_row(form._token) }}
+            <table border="0" >
+                <tr>
+                    <td>{{ form_label(form.title) }}&nbsp&nbsp</td>
+                    <td>{{ form_widget(form.title) }}</td>
+                </tr><tr><td>&nbsp</td></tr>
+                <tr>
+                    <td>{{ form_label(form.description) }}&nbsp&nbsp</td>
+                    <td>{{ form_widget(form.description) }}</td>
+                </tr></tr><tr><td>&nbsp</td></tr>
+                <tr>
+                    <td>{{ form_label(form.price) }}&nbsp&nbsp</td>
+                    <td>{{ form_widget(form.price) }}</td>
+                </tr></tr><tr><td>&nbsp</td></tr>
+                <tr>
+                    <td>{{ form_label(form.cover) }}&nbsp&nbsp</td>
+                    <td>{{ form_widget(form.cover) }}</td>
+                </tr></tr><tr><td>&nbsp</td></tr>
+                <tr>
+                    <td>{{ form_label(form.stream) }}&nbsp&nbsp</td>
+                    <td>{{ form_widget(form.stream) }}</td>
+                </tr></tr><tr><td>&nbsp</td></tr>
+                <tr>
+                    <td>{{ form_label(form.actors) }}&nbsp&nbsp</td>
+                    <td>{{  form_widget(form.actors) }}</td>
+                </tr></tr><tr><td>&nbsp</td></tr>
+                <tr>
+                    <td>{{ form_label(form.categories) }}&nbsp&nbsp</td>
+                    <td>{{  form_widget(form.categories) }}</td>
+                </tr>
+
+
+
+            </table><br/>
+            <button class="col-md-offset-2 col-centered btn btn-primary" type="submit">Edytuj film</button>
+        </form>
+        <br />
+ </div>
+
 {% endblock %}
 
 
