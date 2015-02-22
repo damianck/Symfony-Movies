@@ -8,6 +8,21 @@ shop_main_current_user:
     defaults: { _controller: ShopMainBundle:User:index }
 
 
+shop_main_cart:
+    path:     /cart/
+    defaults: { _controller: ShopMainBundle:Cart:index }
+
+shop_main_cart_add:
+    path:     /cart/add_to_cart/{id}
+    defaults: { _controller: ShopMainBundle:Cart:addToCart }
+
+shop_main_cart_remove:
+    path:     /cart/remove_from_cart/{id}
+    defaults: { _controller: ShopMainBundle:Cart:removeFromCart }
+
+
+
+
 shop_main_movies:
     path: /movies
     defaults:

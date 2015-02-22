@@ -21,27 +21,44 @@ class Order
     protected $id;
 
     /**
+     * @var array
+     * @ORM\Column(type="array")
      * @ORM\ManyToMany(targetEntity="Shop\MainBundle\Entity\Movie")
      */
     protected $movies;
 
 
     /**
+     * @var integer
+     * @ORM\Column(type="integer")
      * @ORM\ManyToOne(targetEntity="Shop\MainBundle\Entity\User", inversedBy="orders")
      */
     protected $userId;
 
     /**
-     *
+     * @var object
+     * @ORM\Column(type="object")
      * @ORM\ManyToOne(targetEntity="Shop\MainBundle\Entity\OrderStatus", inversedBy="order")
      */
     protected $status;
+
+    /**
+     * @var dateOfCreateOrder
+     * @ORM\Column( type="datetime")
+     */
+    protected $dateOfCreateOrder;
+
+    /**
+     * @var dateOfExecutionOrder
+     * @ORM\Column( type="datetime", nullable=true)
+     */
+    protected  $dateOfExecutionOrder;
 
     //---------------------------------------------------- Constructor
 
     public function __construct( )
     {
-        $this->movie = new ArrayCollection();
+        $this->movies = [];
     }
 
     //---------------------------------------------------- Id
@@ -64,10 +81,6 @@ class Order
         return $this->movies;
     }
 
-    public function getMoviesCount()
-    {
-        return $this->movies->count();
-    }
 
     public function setMovies($movies)
     {
@@ -75,6 +88,11 @@ class Order
         return $this;
     }
 
+    public function addMovie($movie)
+    {
+        array_push($this->movies, $movie);
+        return $this;
+    }
     //---------------------------------------------------- user
 
     /**
@@ -121,5 +139,53 @@ class Order
     public function getStatus()
     {
         return $this->status;
+    }
+
+    //---------------------------------------------------- dateOfCreateOrder
+
+    /**
+     * Set dateOfCreateOrder
+     *
+     * @param datetime $dateOfCreateOrder
+     * @return Order
+     */
+    public function setDateOfCreateOrder($dateOfCreateOrder)
+    {
+        $this->dateOfCreateOrder = $dateOfCreateOrder;
+
+        return $this;
+    }
+    /**
+     * Get dateOfCreateOrder
+     *
+     * @return datetime
+     */
+    public function getDateOfCreateOrder()
+    {
+        return $this->dateOfCreateOrder;
+    }
+
+    //---------------------------------------------------- dateOfExecutionOrder
+
+    /**
+     * Set dateOfCreateOrder
+     *
+     * @param datetime $dateOfExecutionOrder
+     * @return Order
+     */
+    public function setDateOfExecutionOrder($dateOfExecutionOrder)
+    {
+        $this->dateOfExecutionOrder = $dateOfExecutionOrder;
+
+        return $this;
+    }
+    /**
+     * Get dateOfExecutionOrder
+     *
+     * @return datetime
+     */
+    public function getDateOfExecutionOrder()
+    {
+        return $this->dateOfExecutionOrder;
     }
 }

@@ -1,15 +1,39 @@
 {% extends 'ShopMainBundle::layout.html.twig' %}
 
 {% block content %}
-	{#<h1>To sa feedy {{ name }}</h1>#}
+	<div class="panel panel-default">
+		<div class="panel-heading"><h4>Zamówienie</h4></div>
 
-	{#<ul>#}
-	{#{% for feed in feeds %}#}
-		{#<li>#}
-			{#<img src="{{ feed.picture }}" />#}
-			{#<p>{{ feed.about }}</p>#}
-		{#</li>#}
-	{#{% endfor %}#}
-	{#</ul>#}
-	{##}
+		{#<!-- Table -->#}
+		<table   class="table table-striped table-bordered"   >
+			<tr>
+				<td><b>No.</b></td>
+				<td><b>Tytuł</b></td>
+				<td><b>Cena</b></td>
+				<td><b>Kategoria</b></td>
+
+			</tr>
+			{% for item in order %}
+				<tr>
+					<td style="width: 70px">{{ loop.index }}</td>
+					<td>{{ item.title }}</td>
+
+					<td style="width: 100px">{{ item.price }}</td>
+					<td>
+						<lu class="list list-unstyled">
+							{% for cat in item.categories %}
+								<li>{{ cat }}</li>
+							{% endfor %}
+						</lu>
+				</tr>
+			{% endfor %}
+		</table>
+
+		<div class="panel-footer">
+
+			<span ><h3><b><small>Łączna kwota zamówienia: </small><big>{{ totalCost }} </big><small> Status zamówienia: </small><big>{{ status }}</big></b></h3></span><br>
+
+			<a href="{{ path('homepage') }}" class="btn btn-success" role="button">Przejdź do płatności</a>
+		</div>
+	</div>
 {% endblock %}

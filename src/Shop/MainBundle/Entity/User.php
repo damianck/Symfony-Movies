@@ -6,6 +6,7 @@ namespace Shop\MainBundle\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
+use Shop\MainBundle\Controller\UserController;
 
 /**
  * @ORM\Entity
@@ -22,6 +23,8 @@ class User extends BaseUser
     protected $id;
 
     /**
+     *  @var array
+     * @ORM\Column(type="array")
      * @ORM\OneToMany(targetEntity="Shop\MainBundle\Entity\Order", mappedBy="userId")
      */
     protected $orders;
@@ -33,9 +36,11 @@ class User extends BaseUser
 
 
 
+
     public function __construct()
     {
-        $this->orders = new ArrayCollection();
+        $this->orders = [];
+        $this->avatar = "http://i.imgur.com/A7Dy18f.png";
         parent::__construct();
         // your own logic
     }
@@ -73,6 +78,10 @@ class User extends BaseUser
      */
     public function getOrders()
     {
+        if( is_null($this->orders))
+        {
+            $this->orders = [];
+        }
         return $this->orders;
     }
 
@@ -84,6 +93,10 @@ class User extends BaseUser
      */
     public function addOrder($order)
     {
+        if( is_null($this->orders) ||$this->orders != [])
+        {
+            $this->orders = [];
+        }
         array_push($this->orders, $order);
 
         return $this;
