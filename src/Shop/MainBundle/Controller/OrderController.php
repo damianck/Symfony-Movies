@@ -7,17 +7,8 @@ use Shop\MainBundle\Entity\Order;
 use Shop\MainBundle\Entity\OrderStatus;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
-/**
- * Class OrderController
- * @package Shop\MainBundle\Controller
- */
 class OrderController extends Controller
 {
-<<<<<<< HEAD
-	/**
-	 * @return mixed
-     */
-=======
 	private function setCartCount()
 	{
 		$em = $this->getDoctrine()->getEntityManager();
@@ -36,7 +27,6 @@ class OrderController extends Controller
 
 	}
 
->>>>>>> 031dbfc138223c9216628f0b9fcedc620bd2dfe9
 	protected function GetCurrentUserOrders()
 	{
 		$em = $this->getDoctrine()->getManager();
@@ -46,9 +36,6 @@ class OrderController extends Controller
 		return $orders;
 	}
 
-	/**
-	 * @return Order
-     */
 	protected function GetNewOrderFromCart()
 	{
 		$userId = $this->getUser()->getId();
@@ -77,9 +64,6 @@ class OrderController extends Controller
 	}
 
 
-	/**
-	 *
-     */
 	protected function ClearCart()
 	{
 		$em = $this->getDoctrine()->getEntityManager();
@@ -96,9 +80,6 @@ class OrderController extends Controller
 		$this->setCartCount();
 	}
 
-	/**
-	 *
-     */
 	protected function InitializeOrderStatus()
 	{
 		$em = $this->getDoctrine()->getEntityManager();
@@ -127,9 +108,7 @@ class OrderController extends Controller
 	}
 
 
-	/**
-	 * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
-     */
+
 	public function createAction()
 	{
 		$this->InitializeOrderStatus();
@@ -170,10 +149,6 @@ class OrderController extends Controller
 		);
 	}
 
-	/**
-	 * @param Request $request
-	 * @return \Symfony\Component\HttpFoundation\Response
-     */
 	public function indexAction(Request $request)
 	{
 		$this->InitializeOrderStatus();
