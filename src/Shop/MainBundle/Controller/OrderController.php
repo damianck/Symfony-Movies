@@ -13,9 +13,30 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
  */
 class OrderController extends Controller
 {
+<<<<<<< HEAD
 	/**
 	 * @return mixed
      */
+=======
+	private function setCartCount()
+	{
+		$em = $this->getDoctrine()->getEntityManager();
+		$cart = $em->getRepository("ShopMainBundle:Cart")->findOneBy(array('userId'=> $this->getUser()->getId()));
+
+		$session = $this->getRequest()->getSession();
+
+		if(is_null($cart) || is_null(count($cart->getMoviesId()))  )
+		{
+			$session->set('cartCount', 0);
+		}
+		else
+		{
+			$session->set('cartCount', count($cart->getMoviesId()));
+		}
+
+	}
+
+>>>>>>> 031dbfc138223c9216628f0b9fcedc620bd2dfe9
 	protected function GetCurrentUserOrders()
 	{
 		$em = $this->getDoctrine()->getManager();
@@ -35,19 +56,19 @@ class OrderController extends Controller
 
 		$repository = $em->getRepository("ShopMainBundle:Cart");
 		$cart = $repository-> findOneBy(array('userId' => $userId ));
-		$status = $em->getRepository("ShopMainBundle:OrderStatus")->findOneBy(array('id'=>1));
 
 		$order = new Order();
-		$order->setStatus($status);
-		$order->setUserId($userId);
+		$order->setStatus($em->getRepository("ShopMainBundle:OrderStatus")->findOneBy(array('id'=>1)));
+		$order->setUserId($em->getRepository("ShopMainBundle:User")->findOneBy(array('id'=> $userId)));
+
 		$order->setDateOfCreateOrder(new dateTime());
 
 		$repo= $em->getRepository("ShopMainBundle:Movie");
 
 		if($cart !== NULL) {
-			foreach ($cart->getMoviesId() as &$item) {
-				$movie = $repo->findOneBy(array('id' => $item));
-				$order->addMovie($movie);
+			foreach ($cart->getMoviesId() as &$item)
+			{
+				$order->addMovie($repo->findOneBy(array('id' => $item)));
 			}
 		}
 		$em->persist($order);
@@ -72,6 +93,7 @@ class OrderController extends Controller
 
 		$em->persist($cart);
 		$em->flush();
+		$this->setCartCount();
 	}
 
 	/**
@@ -102,7 +124,6 @@ class OrderController extends Controller
 
 			$em->flush();
 		}
-
 	}
 
 
