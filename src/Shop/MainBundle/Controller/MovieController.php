@@ -1,5 +1,5 @@
 <?php
- 
+  
 namespace Shop\MainBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
