@@ -105,8 +105,9 @@ class MovieController extends Controller
 		$repository = $em->getRepository("ShopMainBundle:Movie");
 
 		$movie = $repository->find($id);
-		$category = $em->getRepository("ShopMainBundle:Category")->findAll();
-		$actors = $em->getRepository("ShopMainBundle:Actor")->findAll();
+		
+		$category = $movie->getCategories();
+		$actors = $movie->getActors();
 
 		$moviex = new Movie();
 		$moviex->setNumberOfSales(0);
