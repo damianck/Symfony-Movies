@@ -143,7 +143,7 @@ class OrderController extends Controller
 
 
 		return $this->render(
-			'ShopMainBundle:Movie:index.html.twig',
+			'ShopMainBundle:Order:index.html.twig',
 			array(
 				'movies' => $collectionMovies,
 			)
