@@ -17,7 +17,6 @@
 				<td><b>No.p</b></td>
 				<td><b>Nazwisko</b></td>
 				<td><b>Imie</b></td>
-				<td><b>Edycja</b></td>
 				<td><b>Kasowanie</b></td>
 
 			</tr>
@@ -26,9 +25,6 @@
 					<td style="width: 70px">{{ loop.index }}</td>
 					<td>{{ item.lastName }}</td>
 					<td>{{ item.firstName }}</td>
-					<td style="width: 80px">
-						<a href="{{ path('shop_main_actors_edit', {'id': item.id }) }}" class="btn btn-primary btn-sm" role="button">Edytuj</a>
-					</td>
 					<td style="width: 80px">
 						<a href="{{ path('shop_main_actors_delete', {'id': item.id}) }}" onClick="return confirm('Napewno chcesz usunać?')" class="btn btn-primary btn-sm" role="button">Skasuj</a>
 					</td>
