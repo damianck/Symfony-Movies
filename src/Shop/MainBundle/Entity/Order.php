@@ -21,23 +21,17 @@ class Order
     protected $id;
 
     /**
-     * @var array
-     * @ORM\Column(type="array")
      * @ORM\ManyToMany(targetEntity="Shop\MainBundle\Entity\Movie")
      */
     protected $movies;
 
 
     /**
-     * @var integer
-     * @ORM\Column(type="integer")
      * @ORM\ManyToOne(targetEntity="Shop\MainBundle\Entity\User", inversedBy="orders")
      */
     protected $userId;
 
     /**
-     * @var object
-     * @ORM\Column(type="object")
      * @ORM\ManyToOne(targetEntity="Shop\MainBundle\Entity\OrderStatus", inversedBy="order")
      */
     protected $status;
