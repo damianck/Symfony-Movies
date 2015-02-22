@@ -80,5 +80,21 @@ class ActorController extends Controller
         );
 
     }
+    public function editAction(Request $request,$id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $repository = $em->getRepository("ShopMainBundle:Actor");
+
+        $actor = $repository->find($id);
+        $category = $em->getRepository("ShopMainBundle:Category")->find($id);
+        $actors = $em->getRepository("ShopMainBundle:Actor")->find($id);
+
+        return $this->render(
+            'ShopMainBundle:Actor:edit.html.twig',
+            array(
+                'actors' => $actor,
+            )
+        );
+    }
 
 }
