@@ -5,9 +5,7 @@ namespace Shop\MainBundle\Controller;
 use DateTime;
 use Shop\MainBundle\Entity\Order;
 use Shop\MainBundle\Entity\OrderStatus;
-use Shop\MainBundle\Form\OrderType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\Validator\Constraints\Date;
 
 class OrderController extends Controller
 {

@@ -105,7 +105,7 @@ shop_main_reviews:
           _controller: ShopMainBundle:Review:index
 
 shop_main_reviews_create:
-      path: /reviews/create
+      path: /reviews/{id}/create
       defaults:
           _controller: ShopMainBundle:Review:create
 

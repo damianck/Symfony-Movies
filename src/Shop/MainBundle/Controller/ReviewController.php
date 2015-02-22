@@ -9,29 +9,19 @@ use Symfony\Component\HttpFoundation\Request;
 
 class ReviewController extends Controller
 {
-    public function createAction(Request $request)
+    public function createAction(Request $request, $id)
     {
-        $review = new Review();
+        $em = $this->getDoctrine()->getManager();
 
-        $form = $this->createForm(
-            new ReviewType(),
-            $review
+        $review = new Review(
+            $em->getRepository("ShopMainBundle:Movie")-> findOneBy(array('id' => $id )),
+            $content = $this->get('request')->request->get('text'),
+            $this->getUser()->getUsername()
         );
 
-        if ($request->isMethod('POST')
-            && $form->handleRequest($request)
-            && $form->isValid()
-        ) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($review);
-            $em->flush();
-        }
+        $em->persist($review);
+        $em->flush();
 
-        return $this->render(
-            'ShopMainBundle:Review:create.html.twig',
-            array(
-                'form' => $form->createView(),
-            )
-        );
+        return $this->redirect($this->generateUrl('shop_main_movies_details', array( 'id'=> $id)));
     }
 }

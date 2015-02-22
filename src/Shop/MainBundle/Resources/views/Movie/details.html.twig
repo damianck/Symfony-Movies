@@ -32,19 +32,31 @@
            </div>
 
             <div class="col-sm-8">
+                {% if app.user is not empty %}
+                    {% set watch = 'false' %}
+                    {% for order in  app.user.orders %}
+                        {% if order.status.id == '3' %}
+                            {% for item in order.movies %}
+                                {% if item.id == movie.id %}
+                                    <a class="btn btn-success btn-lg pull-right" type="button" role="button" style="paddingt: 20px; margin: 10px" >Oglądaj</a>
+                                    {% set watch = 'true' %}
+                                {% endif %}
+                            {% endfor %}
+                        {% endif %}
+                        {% if order.status.id == '1' or order.status.id == '2'  %}
+                            {% for item in order.movies %}
+                                {% if item.id == movie.id %}
+                                    <a class="btn btn-default btn-lg pull-right" type="button" role="button" style="paddingt: 20px; margin: 10px" >W trakcie Realizacji</a>
+                                    {% set watch = 'true' %}
+                                {% endif %}
+                            {% endfor %}
+                        {% endif %}
 
-                {% set watch = 'false' %}
-                {% for order in  app.user.orders %}
-                    {% if order.status.id == 3 %}
-                        {% for item in order.movies %}
-                            {% if item.id == movie.id %}
-                                <a class="btn btn-success btn-lg pull-right" type="button" role="button" style="paddingt: 20px; margin: 10px" >Oglądaj</a>
-                                {% set watch = 'true' %}
-                            {% endif %}
-                        {% endfor %}
+                    {% endfor %}
+                    {% if watch == 'false' %}
+                        <a href="{{ path('shop_main_cart_add', {'id': movie.id }) }}" class="btn btn-danger btn-lg pull-right" type="button" role="button" style="paddingt: 20px; margin: 10px"  >Dodaj do koszyka</a>
                     {% endif %}
-                {% endfor %}
-                {% if watch == 'false' %}
+                {% else %}
                     <a href="{{ path('shop_main_cart_add', {'id': movie.id }) }}" class="btn btn-danger btn-lg pull-right" type="button" role="button" style="paddingt: 20px; margin: 10px"  >Dodaj do koszyka</a>
                 {% endif %}
             </div>
@@ -97,27 +109,14 @@
                     {% endfor %}
                 <div class="clearfix"></div>
 
-                <form>
-                    <div class="input-group">
-                        <div class="input-group-btn">
-                            <button class="btn btn-default"><i class="glyphicon glyphicon-share"></i></button>
-                        </div>
-                        <input type="text" class="form-control" placeholder="Dodaj opinię..">
-                    </div>
-                </form>
+                {% if app.user is not empty %}
+                    {% block addReview %}
+                        {{  include ('ShopMainBundle:Review:create.html.twig', {'id':movie.id}) }}
+                    {% endblock %}
+                {% endif %}
             </div>
         </div>
     </div>
-
-
-
-
-
-
-
-
-
-
 
 
 

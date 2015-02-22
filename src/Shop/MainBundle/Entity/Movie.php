@@ -61,9 +61,9 @@ class Movie
 
     public function __construct( )
     {
-        $this->categories = new ArrayCollection();
-        $this->actors = new ArrayCollection();
-        $this->reviews = new ArrayCollection();
+        $this->categories = [];
+        $this->actors = [];
+        $this->reviews = [];
     }
 
 
@@ -263,12 +263,19 @@ class Movie
 
     public function getReviewsCount()
     {
-        return $this->reviews->count();
+        return count($this->reviews);
     }
 
     public function setReviews($reviews)
     {
         $this->reviews = $reviews;
+        return $this;
+    }
+
+    public function addReview($review)
+    {
+
+        array_push( $this->reviews, $review);
         return $this;
     }
 

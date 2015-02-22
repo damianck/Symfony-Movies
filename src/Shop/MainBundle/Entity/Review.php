@@ -34,6 +34,12 @@ class Review {
     protected $movie;
 
 
+    public function __construct($movie, $content, $author)
+    {
+        $this->movie = $movie;
+        $this->content = $content;
+        $this->author = $author;
+    }
 
 
     public function getId()

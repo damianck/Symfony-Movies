@@ -49,10 +49,11 @@
         {#<!-- Table -->#}
         <table   class="table table-striped table-bordered"   >
             <tr>
-                <td><b>No.</b></td>
                 <td><b>Tytuł</b></td>
                 <td><b>Cena</b></td>
                 <td><b>Kategoria</b></td>
+                <td><b>Data Założenia zamówienia</b></td>
+                <td><b>Data Realizacji</b></td>
                 <td><b>Status</b></td>
                 <td><b>Szczegóły</b></td>
 
@@ -60,7 +61,6 @@
             {% for order in orders %}
                 {% for movie in order.movies %}
                     <tr>
-                        <td style="width: 70px">{{ loop.index }}</td>
                         <td>{{ movie.title }}</td>
 
 
@@ -71,6 +71,12 @@
                                 <li>{{ cat }}</li>
                             {% endfor %}
                         </lu>
+                         <td style="width: 100px">{{ order.dateOfCreateOrder.format('Y-m-d H:i:s')}}</td>
+                        {%  if order.dateOfExecutionOrder == NULL  %}
+                            <td >W trakcie realizacji</td>
+                        {% else %}
+                            <td >{{ order.dateOfExecutionOrder.format('Y-m-d H:i:s')}}</td>
+                        {% endif %}
                         <td style="width: 100px">{{ order.status.status}}</td>
                         <td style="width: 80px">
                         <a href="{{ path('shop_main_movies_details', {'id': movie.id}) }}" class="btn btn-primary btn-sm" role="button">Szczegóły</a>
