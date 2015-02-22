@@ -6,9 +6,16 @@ namespace Shop\MainBundle\Controller;
 use Shop\MainBundle\Entity\Cart;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
+/**
+ * Class CartController
+ * @package Shop\MainBundle\Controller
+ */
 class CartController extends Controller
 {
 
+    /**
+     *
+     */
     private function setCartCount()
     {
         $em = $this->getDoctrine()->getEntityManager();
@@ -27,6 +34,9 @@ class CartController extends Controller
 
     }
 
+    /**
+     * @return null|object|Cart
+     */
     protected function getCartForCurrentUser()
     {
         $em = $this->getDoctrine()->getEntityManager();
@@ -48,6 +58,9 @@ class CartController extends Controller
 
     }
 
+    /**
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
     public function indexAction()
     {
         $tmp = $this->getUser();
@@ -70,6 +83,7 @@ class CartController extends Controller
         }
     }
 
+        /** @var TYPE_NAME $this */
         $this->setCartCount();
         return $this->render(
             'ShopMainBundle:Cart:index.html.twig',
@@ -81,6 +95,10 @@ class CartController extends Controller
         );
     }
 
+    /**
+     * @param $id
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
     public function addToCartAction( $id)
     {
 
@@ -119,13 +137,14 @@ class CartController extends Controller
                 }
             }
         }
-        
 
 
+        /** @var TYPE_NAME $cart */
         $cart->addMovieId($id);
         $em->persist($cart);
         $em->flush();
 
+        /** @var TYPE_NAME $this */
         $this->setCartCount();
         return $this->render(
             'ShopMainBundle:Cart:addToCart.html.twig',
@@ -136,6 +155,10 @@ class CartController extends Controller
         );
     }
 
+    /**
+     * @param $id
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
     public function removeFromCartAction( $id)
     {
 
@@ -147,6 +170,7 @@ class CartController extends Controller
         $em->persist($cart);
         $em->flush();
 
+        /** @var TYPE_NAME $this */
         $this->setCartCount();
         return $this->render(
             'ShopMainBundle:Cart:removeFromCart.html.twig',

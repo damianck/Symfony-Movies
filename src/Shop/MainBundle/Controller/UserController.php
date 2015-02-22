@@ -6,9 +6,17 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Shop\MainBundle\Entity\Cart;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
+/**
+ * Class UserController
+ * @package Shop\MainBundle\Controller
+ */
 class UserController extends Controller
 {
 
+    /**
+     * @param $userId
+     * @return int
+     */
     public function getCartCount($userId)
     {
         $em = $this->getDoctrine()->getManager();
@@ -30,6 +38,9 @@ class UserController extends Controller
         return $cartCount;
     }
 
+    /**
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
     public function indexAction()
     {
         $tmp = $this->getUser();

@@ -7,8 +7,16 @@ use Shop\MainBundle\Entity\Category;
 use Shop\MainBundle\Form\CategoryType;
 use Symfony\Component\HttpFoundation\Request;
 
+/**
+ * Class CategoryController
+ * @package Shop\MainBundle\Controller
+ */
 class CategoryController extends Controller
 {
+	/**
+	 * @param Request $request
+	 * @return \Symfony\Component\HttpFoundation\Response
+     */
 	public function createAction(Request $request)
 	{	
 		$category = new Category();
@@ -35,6 +43,10 @@ class CategoryController extends Controller
 		);
 	}
 
+	/**
+	 * @param Request $request
+	 * @return \Symfony\Component\HttpFoundation\Response
+     */
 	public function indexAction(Request $request)
 	{
 		$em = $this->getDoctrine()->getManager();
@@ -50,6 +62,12 @@ class CategoryController extends Controller
 			)
 		);
 	}
+
+	/**
+	 * @param Request $request
+	 * @param $id
+	 * @return \Symfony\Component\HttpFoundation\Response
+     */
 	public function deleteAction(Request $request,$id)
 	{
 		$em = $this->getDoctrine()->getManager();
@@ -76,7 +94,12 @@ class CategoryController extends Controller
 		);
 
 	}
-	
+
+	/**
+	 * @param Request $request
+	 * @param $id
+	 * @return \Symfony\Component\HttpFoundation\Response
+     */
 	public function editAction(Request $request,$id)
     {
         $em = $this->getDoctrine()->getManager();

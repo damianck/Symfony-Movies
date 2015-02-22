@@ -1,5 +1,5 @@
 <?php
-  
+
 namespace Shop\MainBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -7,8 +7,16 @@ use Shop\MainBundle\Entity\Movie;
 use Shop\MainBundle\Form\MovieType;
 use Symfony\Component\HttpFoundation\Request;
 
+/**
+ * Class MovieController
+ * @package Shop\MainBundle\Controller
+ */
 class MovieController extends Controller
 {
+	/**
+	 * @param Request $request
+	 * @return \Symfony\Component\HttpFoundation\Response
+     */
 	public function createAction(Request $request)
 	{
 		$movie = new Movie();
@@ -36,6 +44,10 @@ class MovieController extends Controller
 		);
 	}
 
+	/**
+	 * @param Request $request
+	 * @return \Symfony\Component\HttpFoundation\Response
+     */
 	public function indexAction(Request $request)
 	{
 		$em = $this->getDoctrine()->getManager();
@@ -52,6 +64,10 @@ class MovieController extends Controller
 		);
 	}
 
+	/**
+	 * @param $id
+	 * @return \Symfony\Component\HttpFoundation\Response
+     */
 	public function detailsAction($id)
 	{
 		$em = $this->getDoctrine()->getManager();
@@ -78,6 +94,11 @@ class MovieController extends Controller
 		);
 	}
 
+	/**
+	 * @param Request $request
+	 * @param $id
+	 * @return \Symfony\Component\HttpFoundation\Response
+     */
 	public function editAction(Request $request,$id)
 	{
 		$em = $this->getDoctrine()->getManager();
@@ -116,6 +137,11 @@ class MovieController extends Controller
 		);
 	}
 
+	/**
+	 * @param Request $request
+	 * @param $id
+	 * @return \Symfony\Component\HttpFoundation\Response
+     */
 	public function deleteAction(Request $request,$id)
 	{
 		$em = $this->getDoctrine()->getManager();

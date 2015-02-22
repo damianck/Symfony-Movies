@@ -7,8 +7,17 @@ use Shop\MainBundle\Entity\Review;
 use Shop\MainBundle\Form\ReviewType;
 use Symfony\Component\HttpFoundation\Request;
 
+/**
+ * Class ReviewController
+ * @package Shop\MainBundle\Controller
+ */
 class ReviewController extends Controller
 {
+    /**
+     * @param Request $request
+     * @param $id
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     */
     public function createAction(Request $request, $id)
     {
         $em = $this->getDoctrine()->getManager();
