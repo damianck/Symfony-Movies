@@ -13,7 +13,7 @@ class MovieController extends Controller
 	{
 		$movie = new Movie();
 		$movie->setNumberOfSales(0);
-		
+
 		$form = $this->createForm(
 			new MovieType(),
 			$movie
@@ -109,7 +109,8 @@ class MovieController extends Controller
 		//$em->remove($id);
 		$em->remove($movie);
 		$em->flush();
-		//return $this->redirect($this->generateUrl('ShopMainBundle:Movie:index.html.twig',array('movies' => $movie,)));
+
+	//	return $this->redirect($this->generateUrl('ShopMainBundle:Movie:index.html.twig'));
 
 		$movies = $repository->findAll();
 

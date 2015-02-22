@@ -41,7 +41,7 @@
 						<a href="{{ path('shop_main_movies_details', {'id': item.id}) }}" class="btn btn-primary btn-sm" role="button">Wiecej</a>
 					</td>
 					<td style="width: 80px">
-						<a href="{{ path('shop_main_movies_delete', {'id': item.id}) }}" class="btn btn-primary btn-sm" role="button">Skasuj</a>
+						<a href="{{ path('shop_main_movies_delete', {'id': item.id}) }}" onClick="return confirm('Napewno chcesz usunać?')" class="btn btn-primary btn-sm" role="button">Skasuj</a>
 					</td>
 				</tr>
 			{% endfor %}
