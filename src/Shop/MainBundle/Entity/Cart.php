@@ -93,9 +93,14 @@ class Cart
     }
 
     public function removeMovieId($movieId) {
-        // Magic Number
-        // Filmy indeksowane są od 1 a tablica od 0 więc trzeba to naprawić
-        unset($this->moviesId[($movieId -1)]);
+
+        $index =0;
+        foreach($this->moviesId as &$item)
+        {
+            if( $item == $movieId) break;
+            $index++;
+        }
+        unset($this->moviesId[($index)]);
     }
 
 

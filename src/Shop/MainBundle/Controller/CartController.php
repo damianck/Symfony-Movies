@@ -131,7 +131,6 @@ class CartController extends Controller
             'ShopMainBundle:Cart:removeFromCart.html.twig',
             array(
                 'id' => $id,
-                'exist' => false
             )
         );
     }
