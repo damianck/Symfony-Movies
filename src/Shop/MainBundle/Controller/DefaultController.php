@@ -17,6 +17,7 @@ class DefaultController extends Controller
 
         $collectionMostReviewMovies = $repository->findAll();
 
+        $collectionCategories = $em->getRepository("ShopMainBundle:Category")->findAll();
 
         uasort($collectionMostReviewMovies, function($a, $b){
             if ($a->getReviewsCount() == $b->getReviewsCount()) {
@@ -32,6 +33,7 @@ class DefaultController extends Controller
                 'allMovies' => $collectionAllMovies,
                 'mostPopularMovies' => $collectionMostPopularMovies,
                 'mostReviewMovies' => $collectionMostReviewMovies,
+                'collectionCategories' => $collectionCategories
             )
         );
 		

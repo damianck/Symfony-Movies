@@ -6,7 +6,7 @@ namespace Shop\MainBundle\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
-use Shop\MainBundle\Controller\UserController;
+use Shop\MainBundle\Controller\CartController;
 
 /**
  * @ORM\Entity
@@ -126,7 +126,5 @@ class User extends BaseUser
     {
         return $this->avatar;
     }
-
-
 
 }

@@ -30,7 +30,7 @@
 
             <ul class="nav nav-pills  navbar-right" role="tablist">
                 {% if app.user is not empty %}
-                    {#<li role="presentation"><a href="{{ path('shop_main_cart') }}">Koszyk <span class="badge">{{ app.user.getCartCount()}}</span></a></li>#}
+                    <li role="presentation"><a href="{{ path('shop_main_cart') }}">Koszyk <span class="badge">{{ app.session.get('cartCount')}}</span></a></li>
                     <li role="presentation"><a href="{{ path('shop_main_current_user') }}">{{ app.user }}</a></li>
                 {% endif %}
 

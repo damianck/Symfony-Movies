@@ -9,7 +9,7 @@ shop_main_current_user:
 
 
 shop_main_cart:
-    path:     /cart/
+    path:     /cart
     defaults: { _controller: ShopMainBundle:Cart:index }
 
 shop_main_cart_add:

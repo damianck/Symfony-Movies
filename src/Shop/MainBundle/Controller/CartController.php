@@ -3,13 +3,30 @@
 namespace Shop\MainBundle\Controller;
 
 
-use Doctrine\Common\Collections\ArrayCollection;
 use Shop\MainBundle\Entity\Cart;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\Validator\Constraints\Null;
 
 class CartController extends Controller
 {
+
+    private function setCartCount()
+    {
+        $em = $this->getDoctrine()->getEntityManager();
+        $cart = $em->getRepository("ShopMainBundle:Cart")->findOneBy(array('userId'=> $this->getUser()->getId()));
+
+        $session = $this->getRequest()->getSession();
+
+        if(is_null($cart) || is_null(count($cart->getMoviesId()))  )
+        {
+            $session->set('cartCount', 0);
+        }
+        else
+        {
+            $session->set('cartCount', count($cart->getMoviesId()));
+        }
+
+    }
+
     protected function getCartForCurrentUser()
     {
         $em = $this->getDoctrine()->getEntityManager();
@@ -30,7 +47,6 @@ class CartController extends Controller
         return $cart;
 
     }
-
 
     public function indexAction()
     {
@@ -54,6 +70,7 @@ class CartController extends Controller
         }
     }
 
+        $this->setCartCount();
         return $this->render(
             'ShopMainBundle:Cart:index.html.twig',
             array(
@@ -75,6 +92,7 @@ class CartController extends Controller
         {
             if($item == $id)
             {
+                $this->setCartCount();
                 return $this->render(
                     'ShopMainBundle:Cart:addToCart.html.twig',
                     array(
@@ -90,6 +108,7 @@ class CartController extends Controller
             foreach($item->getMovies() as &$movie)
             {
                 if ($movie->getId() == $id) {
+                    $this->setCartCount();
                     return $this->render(
                         'ShopMainBundle:Cart:addToCart.html.twig',
                         array(
@@ -107,6 +126,7 @@ class CartController extends Controller
         $em->persist($cart);
         $em->flush();
 
+        $this->setCartCount();
         return $this->render(
             'ShopMainBundle:Cart:addToCart.html.twig',
             array(
@@ -127,6 +147,7 @@ class CartController extends Controller
         $em->persist($cart);
         $em->flush();
 
+        $this->setCartCount();
         return $this->render(
             'ShopMainBundle:Cart:removeFromCart.html.twig',
             array(
