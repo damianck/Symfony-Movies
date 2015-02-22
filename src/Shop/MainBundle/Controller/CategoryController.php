@@ -76,4 +76,21 @@ class CategoryController extends Controller
 		);
 
 	}
+	
+	public function editAction(Request $request,$id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $repository = $em->getRepository("ShopMainBundle:Category");
+
+        $categories = $repository->find($id);
+        $category = $em->getRepository("ShopMainBundle:Category")->find($id);
+        $actors = $em->getRepository("ShopMainBundle:Actor")->find($id);
+
+        return $this->render(
+            'ShopMainBundle:Category:edit.html.twig',
+            array(
+                'category' => $categories,
+            )
+        );
+    }
 }
