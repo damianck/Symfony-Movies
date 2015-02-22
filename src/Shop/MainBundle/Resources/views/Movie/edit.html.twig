@@ -7,7 +7,41 @@
     <div class="panel-body">
         <a href="{{ path('shop_main_movies') }}" class="btn btn-primary" role="button">Porzuć zmiany i cofnij</a>
     </div>
+    </div>
+    <div class="panel panel-default">
 
+        <div class="panel-heading"><h4>Bieżace dane:</h4></div>
+
+    <table   class="table table-striped table-bordered"   >
+        <tr>
+
+            <td><b>Tytuł</b></td>
+            <td><b>Liczba sprzedaży</b></td>
+            <td><b>Cena</b></td>
+            <td><b>Kategoria</b></td>
+            <td><b>Aktorzy</b></td>
+        </tr>
+        <tr>
+
+            <td>{{ movies.title }}</td>
+            <td>{{ movies.numberOfSales }}</td>
+            <td>{{ movies.price }}</td>
+            <td>
+            {% for item in category %}
+                {{ item }} <br />
+            {% endfor %}
+            </td>
+            <td>
+            {% for item in actors %}
+                {{ item }} <br/>
+            {% endfor %}
+            </td>
+        </tr>
+    </table>
+</div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading"><h4>Wprowadz nowe dane:</h4></div>
     <form method="POST"  class="col-md-offset-5 col-centered">
 
 
@@ -16,11 +50,8 @@
 
         <button class="col-md-offset-2 col-centered" type="submit">Zapisz zmiany</button>
     </form>
+ </div>
 
-
-
-
-</div>
 {% endblock %}
 
 

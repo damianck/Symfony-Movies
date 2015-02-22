@@ -84,13 +84,15 @@ class MovieController extends Controller
 		$repository = $em->getRepository("ShopMainBundle:Movie");
 
 		$movie = $repository->find($id);
-		$category = $em->getRepository("ShopMainBundle:Category")->find($id);
-		$actors = $em->getRepository("ShopMainBundle:Actor")->find($id);
+		$category = $em->getRepository("ShopMainBundle:Category")->findAll();
+		$actors = $em->getRepository("ShopMainBundle:Actor")->findAll();
 
 		return $this->render(
 			'ShopMainBundle:Movie:edit.html.twig',
 			array(
 				'movies' => $movie,
+				'category' => $category,
+				'actors' => $actors,
 			)
 		);
 	}
